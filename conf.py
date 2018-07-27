@@ -40,7 +40,7 @@ templates_path = ['_templates']
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = 'docs/index'
 
 # General information about the project.
 project = u'FISCO BCOS'
@@ -61,7 +61,8 @@ release = 'FISCO BCOS'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+#language = None
+language = 'zh_CN'
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
@@ -105,6 +106,7 @@ pygments_style = 'sphinx'
 import sphinx_rtd_theme
 html_theme = "sphinx_rtd_theme"
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+todo_include_todos = True
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -159,7 +161,7 @@ html_static_path = ['_static']
 #html_domain_indices = True
 
 # If false, no index is generated.
-#html_use_index = True
+html_use_index = True
 
 # If true, the index is split into individual pages for each letter.
 #html_split_index = False
@@ -186,6 +188,7 @@ html_show_sourcelink = True
 #   'da', 'de', 'en', 'es', 'fi', 'fr', 'hu', 'it', 'ja'
 #   'nl', 'no', 'pt', 'ro', 'ru', 'sv', 'tr'
 #html_search_language = 'en'
+html_search_language = 'zh'
 
 # A dictionary with options for the search language support, empty by default.
 # Now only 'ja' uses this config value
@@ -202,10 +205,10 @@ htmlhelp_basename = 'Testdoc'
 
 latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
-#'papersize': 'letterpaper',
+'papersize': 'a4paper',
 
 # The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
+'pointsize': '10pt',
 
 # Additional stuff for the LaTeX preamble.
 #'preamble': '',
@@ -248,7 +251,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'test', u'Test Documentation',
+    (master_doc, 'FISCO BCOS', u'FISCO BCOS Documentation',
      [author], 1)
 ]
 
@@ -262,8 +265,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'Test', u'Test Documentation',
-   author, 'Test', 'One line description of project.',
+  (master_doc, 'FISCO BCOS', u'FISCO BCOS Documentation',
+   author, 'fisco-dev', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -285,7 +288,15 @@ from recommonmark.parser import CommonMarkParser
 
 # The suffix of source filenames.
 source_suffix = ['.rst', '.md']
-
 source_parsers = {
 	'.md': CommonMarkParser,
 }
+
+#extensions = [
+#	'sphinx_markdown_tables', 
+#]
+extensions = [
+    'sphinx.ext.todo',
+    'sphinx.ext.mathjax',
+    'sphinx.ext.ifconfig',
+]

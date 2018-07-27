@@ -1,3 +1,4 @@
 sphinx-rtd-theme
 sphinx
-recommonmark
+git+https://github.com/rtfd/recommonmark
+jieba

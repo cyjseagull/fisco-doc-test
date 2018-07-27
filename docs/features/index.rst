@@ -2,7 +2,7 @@
 FISCO-BCOS特性详解
 ################################################################################
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    systemcontract/index.rst
    consensus/index.rst
