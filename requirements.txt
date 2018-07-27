@@ -1,5 +1,5 @@
 sphinx-rtd-theme
-sphinx
-CommonMark
+sphinx==1.7.6
+CommonMark==0.7.5
 git+https://github.com/rtfd/recommonmark
 jieba
