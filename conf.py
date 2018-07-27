@@ -14,6 +14,10 @@
 
 import sys
 import os
+import sphinx_rtd_theme
+from recommonmark.transform import AutoStructify
+from recommonmark.parser import CommonMarkParser
+
 
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -103,7 +107,6 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-import sphinx_rtd_theme
 html_theme = "sphinx_rtd_theme"
 html_theme_options = {'navigation_depth': 4,}
 using_rtd_theme = True
@@ -286,8 +289,6 @@ texinfo_documents = [
 
 # Markdown support
 
-from recommonmark.transform import AutoStructify
-from recommonmark.parser import CommonMarkParser
 
 # The suffix of source filenames.
 source_suffix = ['.rst', '.md']
