@@ -105,6 +105,8 @@ pygments_style = 'sphinx'
 # a list of builtin themes.
 import sphinx_rtd_theme
 html_theme = "sphinx_rtd_theme"
+html_theme_options = {'navigation_depth': 4,}
+using_rtd_theme = True
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 todo_include_todos = True
 
@@ -285,6 +287,7 @@ texinfo_documents = [
 # Markdown support
 
 from recommonmark.parser import CommonMarkParser
+from recommonmark.transform import AutoStructify
 
 # The suffix of source filenames.
 source_suffix = ['.rst', '.md']
@@ -300,3 +303,11 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.ifconfig',
 ]
+
+github_doc_root = 'https://github.com/rtfd/recommonmark/tree/master/doc/'
+def setup(app):
+    app.add_config_value('recommonmark_config', {
+            'url_resolver': lambda url: github_doc_root + url,
+            'auto_toc_tree_section': 'Contents',
+            }, True)
+    app.add_transform(AutoStructify)
