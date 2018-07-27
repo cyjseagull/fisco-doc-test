@@ -10,13 +10,6 @@
        检查web3sdk要连接的FISCO BCOS节点channelPort是否能telnent通，若telnet不通，需要检查网络连通性和安全策略
 ```
 
-## 环境检查
-
-- **FISCO BCOS节点环境搭建完成**：参考[FISCO-BCOS入门](../getstart/setup.md)
-- **java**: 要求[jdk1.8+](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)，推荐使用jdk8u141
-- **网络连通性检查**：检查web3sdk要连接的FISCO BCOS节点channelPort是否能telnent通，若telnet不通，需要检查网络连通性和安全策略。
-
-
 ## 安装依赖软件 
 
 部署web3sdk之前需要安装git, dos2unix依赖软件:

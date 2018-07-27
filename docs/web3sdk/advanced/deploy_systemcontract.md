@@ -1,11 +1,20 @@
 # 系统合约部署
 
-部署完适配于[FISCO BCOS](https://github.com/FISCO-BCOS/FISCO-BCOS/tree/master/doc/manual)的web3sdk后，可调用InitSystemContract部署系统合约，系统合约部署工具InitSystemContract由`src/main/java/org/bcos/contract/tools/InitSystemContract.java`调用合约生成的java代码实现，使用如下命令部署系统合约：
+web3sdk提供了系统合约部署工具, 使用`./web3sdk InitSystemContract`命令部署系统合约:
+
+``` important::
+
+     - 部署系统合约前，请参考 `web3sdk入门 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/quick-start/index.html>`_ 搭建并运行web3sdk
+     - 部署系统合约前，请保证web3sdk连接的FISCO-BCOS节点运行正常(可以正常出块)
+     - 若FISCO-BCOS节点已部署系统合约，没有必要再用web3sdk再次部署系统合约 
+```
+
 
 ```bash
-##进入dist目录(设web3sdk存放于/mydata/目录)
+#-----进入dist目录(设web3sdk存放于/mydata/目录)
 $ cd /mydata/web3sdk/dist/bin
-####执行部署工具InitSystemContract部署系统合约:
+
+#-----执行部署工具InitSystemContract部署系统合约:
 $ ./web3sdk InitSystemContract
 ===================================================================
 Start deployment...
@@ -34,11 +43,12 @@ Contract Deployment Completed System Agency Contract:0xc9ed60a2ebdf22936fdc92013
  7)FileServerManager=>0xfbe0184fe09a3554103c5a541ba052f7fa45283b,false,42
 ```
 
-部署完毕的系统合约地址是0xc9ed60a2ebdf22936fdc920133af2a77dd553e13, 还需要进行如下两步操作：
+部署完毕的系统合约地址是0xc9ed60a2ebdf22936fdc920133af2a77dd553e13
 
-**设置配置文件的系统合约地址：将/mydata/web3sdk/dist/conf/applicationContext.xml的systemProxyAddress字段更新为输出的系统合约地址**
 
-执行完上述两步操作后，按照[FISCO BCOS区块链操作手册](https://github.com/FISCO-BCOS/FISCO-BCOS/tree/master/doc/manual#第七章-多记账节点组网) **多记账节点组网**一节进行加入新节点等操作。
+**系统合约配置**
 
-> 注：InitSystemContract用来部署一套系统合约（用来做链的初始化和测试，生产环境请谨慎操作）。部署完成后需要将系统合约地址替换到各个节点的config.json和web3sdk工具的applicationContext.xml配置中，并重启节点。
+部署完系统合约后，若要使用该系统合约，需要如下操作:
 
+- 将`dist/conf/applicationContext.xml`的`systemProxyAddress`字段更新为输出的系统合约地址
+- 将输出的系统合约地址更新到所有FISCO-BCOS节点config.json的`systemProxyAddress`字段，并重启节点
