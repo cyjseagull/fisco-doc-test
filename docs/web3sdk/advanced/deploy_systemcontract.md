@@ -46,9 +46,13 @@ Contract Deployment Completed System Agency Contract:0xc9ed60a2ebdf22936fdc92013
 部署完毕的系统合约地址是0xc9ed60a2ebdf22936fdc920133af2a77dd553e13
 
 
-**系统合约配置**
+```eval_rst
+.. note:: **系统合约配置**
+   部署完系统合约后，若要使用该系统合约，需要如下操作:
 
-部署完系统合约后，若要使用该系统合约，需要如下操作:
+   - 将`dist/conf/applicationContext.xml`的`systemProxyAddress`字段更新为输出的系统合约地址
+   - 将输出的系统合约地址更新到所有FISCO-BCOS节点config.json的`systemProxyAddress`字段，并重启节点
+```
 
-- 将`dist/conf/applicationContext.xml`的`systemProxyAddress`字段更新为输出的系统合约地址
-- 将输出的系统合约地址更新到所有FISCO-BCOS节点config.json的`systemProxyAddress`字段，并重启节点
+
+
