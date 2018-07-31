@@ -44,7 +44,7 @@ templates_path = ['_templates']
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'docs/index'
+master_doc = 'docs/index.rst'
 
 # General information about the project.
 project = u'FISCO BCOS'
