@@ -23,4 +23,4 @@ cd FISCO-BCOS
 sh build.sh
 ```
 
-安装成功后，会XXXX
+安装成功后，会XXXXX
