@@ -1,50 +1,32 @@
 # 系统合约工具
 
-在SDK工具包/mydata/web3sdk/dist/bin（设web3sdk存放于/mydata目录下）目录下，compile.sh为合约编译脚本，web3sdk为SDK的的执行脚本。web3sdk脚本中将系统合约接口进行暴露。系统合约介绍文档参考[FISCO BCOS系统合约介绍](https://github.com/FISCO-BCOS/Wiki/tree/master/FISCO-BCOS%E7%B3%BB%E7%BB%9F%E5%90%88%E7%BA%A6%E4%BB%8B%E7%BB%8D)
+web3sdk提供了系统合约管理工具，下表简单介绍了这些管理工具,系统合约介绍文档参考[FISCO BCOS系统合约介绍](https://github.com/FISCO-BCOS/Wiki/tree/master/FISCO-BCOS%E7%B3%BB%E7%BB%9F%E5%90%88%E7%BA%A6%E4%BB%8B%E7%BB%8D)
 
-## 系统合约介绍
+```eval_rst
++------------------------+-----------------------------------------------------------------------+
+|  系统合约              |    详细说明                                                           |
++========================+=======================================================================+
+|  SystemProxy           |    系统合约代理合约                                                   |
++------------------------+-----------------------------------------------------------------------+
+|  TransactionFilterChain|    设置transaction过滤器                                              |
++------------------------+-----------------------------------------------------------------------+
+|  ConfigAction          |    设置/获取区块链系统参数，可参考 `_系统参数说明文档 <TODO>`_        |
++------------------------+-----------------------------------------------------------------------+
+|  ConsensusControlMg    |    联盟控制合约，可参考 `_联盟控制模板参考文档 <TODO>`_               |
++------------------------+-----------------------------------------------------------------------+
+|  CAAction              |    证书列表黑名单管理: 包括将证书加入黑名单列表，                     |
+|                        |    将指定证书从黑名单列表删除，获取证书黑名单列表功能                 |
++------------------------+-----------------------------------------------------------------------+
+|  ContractAbiMgr        |    ABI相关合约                                                        |
++------------------------+-----------------------------------------------------------------------+
 
-web3sdk将系统合约部署于链上，并可通过工具调用这些系统合约，部署的系统合约如下：
+```
 
-<table border="1"; padding="3px 7px 2px 7px">
-    <tr bgcolor="DeepSkyBlue">
-        <td>系统合约</td>
-        <td>详细说明</td>
-    </tr>
-    <tr>
-        <td bgcolor="DeepSkyBlue">SystemProxy</td>
-        <td>系统合约代理合约</td>
-    </tr>
-    <tr>
-        <td bgcolor="DeepSkyBlue">TransactionFilterChain</td>
-        <td>设置transaction过滤器</td>
-    </tr>
-    <tr>
-        <td bgcolor="DeepSkyBlue">ConfigAction</td>
-        <td>设置/获取区块链系统参数，可参考[系统参数说明文档](https://github.com/FISCO-BCOS/Wiki/tree/master/%E7%B3%BB%E7%BB%9F%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3)</td>
-    </tr>
-    <tr>
-        <td bgcolor="DeepSkyBlue">ConsensusControlMg</td>
-        <td>联盟控制合约，可参考[联盟控制模板参考文档](https://github.com/FISCO-BCOS/FISCO-BCOS/blob/master/doc/%E5%BC%B9%E6%80%A7%E8%81%94%E7%9B%9F%E9%93%BE%E5%85%B1%E8%AF%86%E6%A1%86%E6%9E%B6%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3.md)</td>
-    </tr>
-    <tr>
-        <td bgcolor="DeepSkyBlue">CAAction</td>
-        <td>证书列表黑名单管理: 包括将证书加入黑名单列表，将制定证书从黑名单列表删除，获取证书黑名单列表功能</td>
-    </tr>
-    <tr>
-        <td bgcolor="DeepSkyBlue">ContractAbiMgr</td>
-        <td>ABI相关合约</td>
-    </tr>
-</table>
+web3sdk/dist/bin/web3sdk是web3sdk的执行脚本, 下面介绍如何通过web3sdk脚本调用系统合约管理工具:
 
-
-## 系统合约工具使用方法
-
-web3sdk使用SystemContractTools调用系统合约，主要功能如下：
-
-**(1) 系统合约代理合约SystemProxy**
-
-**调用方法**:
+### 系统合约代理合约SystemProxy
+ 
+遍历系统代理合约路由表，输出所有系统合约地址
 
 ```bash
 ##设web3sdk代码位于/mydata/目录下
@@ -53,14 +35,13 @@ cd /mydata/web3sdk/dist/bin
 chmod a+x web3sdk
 ./web3sdk SystemProxy
 ```
-**功能**：遍历系统代理合约路由表，输出所有系统合约地址
 
 
-**(2) 节点管理合约NodeAction**
+### 节点管理合约NodeAction
 
-**① 加入节点**
+(1) 将节点加入记账者列表
 
-**调用方法**: 
+将${node_json_path}(${node_json_path}是节点配置文件相对于dist/conf的路径)中指定的节点加入到FISCO BCOS区块链网络中:
 
 ```bash
 ##设web3sdk代码位于/mydata/目录下
@@ -69,41 +50,26 @@ cd /mydata/web3sdk/dist/bin
 chmod a+x web3sdk
 ./web3sdk NodeAction registerNode ${node_json_path}
 ```
+注: ${node_json_path}是节点配置文件相对于dist/conf的路径，节点配置文件主要包括如下配置项:
 
-**功能**：将${node_json_path}中指定的节点加入到FISCO BCOS区块链网络中(注: ${node_json_path}是节点配置文件相对于dist/conf的路径)
 
-节点配置文件主要包括如下配置项：
-
-<table border="1"; padding="3px 7px 2px 7px">
-    <tr bgcolor="DeepSkyBlue">
-        <td>配置项</td>
-        <td>详细说明</td>
-    </tr>
-    <tr>
-        <td bgcolor="DeepSkyBlue">id</td>
-        <td>节点的node id</td>
-    </tr>
-     <tr>
-        <td bgcolor="DeepSkyBlue">ip</td>
-        <td>节点IP</td>
-    </tr>
-     <tr>
-        <td bgcolor="DeepSkyBlue">port</td>
-        <td>节点P2P连接端口</td>
-    </tr>
-    <tr>
-        <td bgcolor="DeepSkyBlue">desc</td>
-        <td>节点描述</td>
-    </tr>
-    <tr>
-        <td bgcolor="DeepSkyBlue">agencyinfo</td>
-        <td>节点所属机构信息</td>
-    </tr>
-     <tr>
-        <td bgcolor="DeepSkyBlue">idx</td>
-        <td>节点序号，按照加入顺序排序</td>
-    </tr>
-</table>
+```eval_rst
++------------+--------------------------------+
+| 配置项     | 详细说明                       |
++============+================================+
+| id         | 节点node id                    |
++------------+--------------------------------+
+| ip         | 节点IP                         |
++------------+--------------------------------+
+| port       | 节点P2P连接端口                |
++------------+--------------------------------+
+| desc       | 节点描述                       |
++------------+--------------------------------+
+| agencyinfo | 节点所属机构信息               |
++------------+--------------------------------+
+| idx        |  节点序号，按照加入顺序排序    |
++------------+--------------------------------+
+```
 
 一个简单的节点配置文件node.json示例如下:
 
@@ -119,11 +85,9 @@ chmod a+x web3sdk
 }
 ```
 
-<br>
+(2) 退出节点
 
-**② 退出节点**
-
-**调用方法**：
+将${node_json_path}指定的节点从FISCO BCOS区块链网络中退出(${node_json_path}是节点配置文件相对于/mydata/web3sdk/dist/conf的路径，节点配置文件说明同上)
 
 ```bash
 ##设web3sdk代码位于/mydata/目录下
@@ -132,13 +96,11 @@ cd /mydata/web3sdk/dist/bin
 chmod a+x web3sdk
 ./web3sdk NodeAction cancelNode ${node_json_path}
 ```
-**功能**：将${node_json_path}指定的节点从FISCO BCOS区块链网络中退出(注: ${node_json_path}是节点配置文件相对于/mydata/web3sdk/dist/conf的路径，节点配置文件说明同上)
 
-<br>
+(3) 显示节点连接信息
 
-**③ 显示节点连接信息**
+可通过如下命令查询区块链网络中所有记账节点信息:
 
-**调用方法**:
 ```bash
 ##设web3sdk代码位于/mydata/目录下
 #----进入bin目录---
@@ -147,7 +109,7 @@ chmod a+x web3sdk
 ./web3sdk NodeAction all
 ```
 
-**功能**：显示FISCO BCOS区块链网络中所有节点信息，输出示例如下：
+输出的记账节点信息如下：
 
 ```bash
 $ cd /mydata/web3sdk/dist/bin
@@ -164,11 +126,11 @@ org.bcos.web3j.abi.datatypes.generated.Uint256@ee871267
 ```
 
 
-**(3) 节点证书管理合约CAAction**
+### 节点证书管理合约CAAction
 
-**① 将指定节点证书加入黑名单列表**
+(1) 将指定节点证书加入黑名单列表
 
-**调用方法**: 
+可使用如下命令将路径${node_ca_path}(${node_ca_path}是节点配置文件相对于dist/conf的路径)指定的节点证书信息添加到黑名单列表，加入成功后，其他节点将拒绝与此节点连接:
 
 ```bash
 ##设web3sdk代码位于/mydata/目录下
@@ -178,13 +140,9 @@ chmod a+x web3sdk
 ./web3sdk CAAction add ${node_ca_path}
 ```
 
-**功能**：通过系统合约CAAction，将路径${node_ca_path}指定的节点证书信息添加到黑名单列表，其他节点将拒绝与此节点连接(注: ${node_ca_path}是节点配置文件相对于dist/conf的路径)
+(2) 从黑名单列表中删除指定节点证书信息
 
-<br>
-
-**② 从黑名单列表中删除指定节点证书信息**
-
-**调用方法**:
+可使用如下命令将${node_ca_path}(${node_ca_path}是节点配置文件相对于dist/conf的路径)指定的节点证书信息从黑名单列表中删除，其他节点恢复与该节点的连接:
 
 ```bash
 ##设web3sdk代码位于/mydata/目录下
@@ -194,14 +152,9 @@ chmod a+x web3sdk
 ./web3sdk CAAction remove ${node_ca_path}
 ```
 
-**功能**：通过系统合约CAAction，将${node_ca_path}指定的节点证书信息从黑名单列表中删除，其他节点恢复与该节点的连接(注: ${node_ca_path}是节点配置文件相对于dist/conf的路径)
+(3) 显示区块链黑名单节点证书信息
 
-<br>
-
-**③ 显示区块链黑名单节点证书信息**
-
-**调用方法**: 
-
+使用如下命令可获取记录在系统合约CAAction中的所有黑名单节点证书信息：
 ```bash
 ##设web3sdk代码位于/mydata/目录下
 #----进入bin目录---
@@ -210,71 +163,48 @@ chmod a+x web3sdk
 ./web3sdk CAAction all
 ```
 
-**功能**: 显示记录在系统合约CAAction中的所有黑名单节点证书信息
+### 系统参数配置合约ConfigAction
+
+(1) 获取系统参数：./web3sdk ConfigAction get ${key}
+
+从系统合约ConfigAction读取${key}对应的值(ConfigAction中记录的系统参数说明参考[系统参数说明文档](https://github.com/FISCO-BCOS/Wiki/tree/master/%E7%B3%BB%E7%BB%9F%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3))
 
 
+(2) 设置系统参数信息：./web3sdk ConfigAction set ${key} ${setted_value}
 
-**(4) 系统参数配置合约ConfigAction**
-
-
-**FISCO BCOS系统合约主要配置如下:**
-
-<br>
-
-<table border="1"; padding="3px 7px 2px 7px">
-    <tr bgcolor="DeepSkyBlue">
-        <td>配置项</td>
-        <td>详细说明</td>
-    </tr>
-    <tr>
-        <td>maxBlockTransactions</td>
-        <td>控制一个块内允许打包的最大交易数量上限 <br>  设置范围: [0, 2000) <br> 默认值:1000</td>
-    </tr>
-    <tr>
-        <td>intervalBlockTime</td>
-        <td>设置出块间隔时间 <br> 设置范围：大于等于1000 <br> 默认值: 1000</td>
-    </tr>
-    <tr>
-        <td>maxBlockHeadGas</td>
-        <td>控制一个块允许最大Gas消耗上限 <br> 取值范围: 大于等于2000,000,000 <br> 默认值: 2000,000,000</td>
-    </tr>
-    <tr>
-        <td>maxTransactionGas</td>
-        <td>设置一笔交易允许消耗的最大gas <br> 取值范围: 大于等于30,000,000 <br> 默认值: 30,000,000</td>
-    </tr>
-    <tr>
-        <td>maxNonceCheckBlock</td>
-        <td>控制Nonce排重覆盖的块范围 <br> 取值范围： 大于等于1000 <br>  缺省值: 1000</td>
-    </tr>
-    <tr>
-        <td>maxBlockLimit</td>
-        <td>控制允许交易上链延迟的最大块范围 <br> 取值范围：大于等于1000 <br> 缺省值：1000</td>
-    </tr>
-    <tr>
-        <td>CAVerify</td>
-        <td>控制是否打开CA验证 <br> 取值：true或者false  <br>  缺省值: false</td>
-    </tr>
-    <tr>
-        <td>omitEmptyBlock</td>
-        <td>控制是否忽略空块 <br> 取值：true或者false  <br> 缺省值：false</td>
-    </tr>
-</table>
-
-<br>
-
-**① 获取系统参数**
-
-**调用方法**: 在/mydata/web3sdk/dist/bin目录下执行./web3sdk ConfigAction get ${配置项}
-
-**功能**: 从系统合约ConfigAction读取${key}对应的值(ConfigAction中记录的系统参数说明参考[系统参数说明文档](https://github.com/FISCO-BCOS/Wiki/tree/master/%E7%B3%BB%E7%BB%9F%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3))
+将记录在系统合约ConfigAction中${key}对应的值设置为${setted_value}(ConfigAction中记录的系统参数说明参考[系统参数说明文档](https://github.com/FISCO-BCOS/Wiki/tree/master/%E7%B3%BB%E7%BB%9F%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3))
 
 
-**② 设置系统参数信息**
+**FISCO BCOS系统合约主要配置如下**:
 
-**调用方法**: 在/mydata/web3sdk/dist/bin目录下执行./web3sdk ConfigAction set ${配置项} ${配置项的值}
-
-**功能**: 将记录在系统合约ConfigAction中${key}对应的值设置为${setted_value}(ConfigAction中记录的系统参数说明参考[系统参数说明文档](https://github.com/FISCO-BCOS/Wiki/tree/master/%E7%B3%BB%E7%BB%9F%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3))
-
+```eval_rst
++-------------------------+-------------------------------------------------------------+
+| 配置项                  |     详细说明                                                |
++=========================+=============================================================+
+| maxBlockTransactions    |     控制一个块内允许打包的最大交易数量上限                  |
+|                         |     设置范围: [0, 2000), 默认值:1000                        |
++-------------------------+-------------------------------------------------------------+
+| intervalBlockTime       |     设置出块间隔时间                                        |
+|                         |     设置范围：大于等于1000, 默认值: 1000                    |
++-------------------------+-------------------------------------------------------------+
+|  maxBlockHeadGas        |      控制一个块允许最大Gas消耗上限                          |
+|                         |      取值范围: 大于等于2000,000,000, 默认值: 2000,000,000   |
++-------------------------+-------------------------------------------------------------+
+|  maxTransactionGas      |      设置一笔交易允许消耗的最大gas                          |
+|                         |      取值范围: 大于等于30,000,000, 默认值: 30,000,000       |
++-------------------------+-------------------------------------------------------------+
+|  maxNonceCheckBlock     |      控制Nonce排重覆盖的块范围                              |
+|                         |      取值范围： 大于等于1000, 缺省值: 1000                  |
++-------------------------+-------------------------------------------------------------+
+|  maxBlockLimit          |      控制允许交易上链延迟的最大块范围                       |
+|                         |      取值范围：大于等于1000, 缺省值：1000                   |
++-------------------------+-------------------------------------------------------------+
+|  CAVerify               |      控制是否打开CA验证,取值：true或者false, 缺省值: false  |      
++-------------------------+-------------------------------------------------------------+
+|  omitEmptyBlock         |      控制是否忽略空块                                       |
+|                         |      取值：true或者false, 缺省值：false                     |
++-------------------------+-------------------------------------------------------------+
+```
 
 **通过ConfigAction配置系统参数的例子如下:**
 
@@ -302,21 +232,10 @@ $ ./web3sdk ConfigAction set CAVerify true
 # ......
 ```
 
-**(5) 联盟控制合约ConsensusControl**
+### 联盟控制合约ConsensusControl
 
-**① 部署联盟共识模板**
+(1) 部署联盟共识模板:./web3sdk ConsensusControl deploy
 
-**调用方法**: ./web3sdk ConsensusControl deploy
+(2) 获取联盟共识模板合约地址:./web3sdk ConsensusControl list
 
-<br>
-
-**② 获取联盟共识模板合约地址**
-
-**调用方法**: ./web3sdk ConsensusControl list
-
-<br>
-
-**③ 关闭联盟共识特性**
-
-**调用方法**:  ./web3sdk ConsensusControl list turnoff
-
+(3) 关闭联盟共识特性: ./web3sdk ConsensusControl list turnoff

@@ -43,6 +43,30 @@ $ dos2unix *.sh
 $ bash compile.sh
 
 #===编译成功后，web3sdk目录下生成dist文件夹，目录结构如下==========
+$ tree -L 2
+.
+├── build
+│   ├── classes
+│   ├── reports
+│   ├── resources
+│   ├── test-results
+│   └── tmp
+├── build.gradle
+├── ca.crt
+├── client.keystore
+├── dist
+│   ├── apps
+│   ├── bin
+│   ├── contracts
+│   └── lib
+├── README.md
+├── src
+│   ├── main
+│   └── test
+└── tools
+    ├── bin
+    └── contracts
+
 ```
 dist目录下各个目录包含的内容如下：
 

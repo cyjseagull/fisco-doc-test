@@ -2,9 +2,9 @@
 
 web3sdk编译配置成功后，可调用Ok合约测试web3sdk与服务器是否连接正常:
 
-``` important:: Tips
-    测试客户端与节点连接是否正常时，必须保证连接的FISCO-BCOS节点能正常出块
-    FISCO-BCOS节点是否正常可参考 `FISCO BCOS入门的相关介绍<http://fisco-bcos-test.readthedocs.io/zh/latest/docs/getstart/setup_nodes.html>`_
+``` important::
+    - 测试客户端与节点连接是否正常时，必须保证连接的FISCO-BCOS节点能正常出块
+    - FISCO-BCOS节点是否正常可参考 `FISCO BCOS入门的相关介绍<http://fisco-bcos-test.readthedocs.io/zh/latest/docs/getstart/setup_nodes.html>`_
 
 ```
 

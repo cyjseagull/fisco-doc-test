@@ -22,7 +22,7 @@ $ mv ca-agency.crt ca.crt
 
 ## 生成web3sdk证书client.keystore
 
-和其他sdk(前置)连接时, client.keystore是web3sdk的连接证书; 在[存证案例中](TODO), client.keystore中包含的私钥还可用于为交易签名.
+和其他sdk(前置)连接时, client.keystore是web3sdk的连接证书; 在[存证案例中](https://github.com/FISCO-BCOS/evidenceSample), client.keystore中包含的私钥还可用于为交易签名.
 
 
  client.keystore生成过程如下：
@@ -47,20 +47,5 @@ $ mv ca-agency.crt ca.crt
     $ openssl pkcs12 -export -name client -in sdk.crt -inkey sdk.key -out keystore.p12
     
     # 将keystore.p12导入client.keystore
-    keytool -importkeystore -destkeystore client.keystore -srckeystore keystore.p12 -srcstoretype pkcs12 -alias client
-```
-
-**(3)*加载client.keystore中私钥作为交易签名密钥**
-
-
-```java
-   //初始化并加载keystore对象
-   KeyStore ks = KeyStore.getInstance("JKS");
-   ksInputStream =  Ethereum.class.getClassLoader().getResourceAsStream(keyStoreFileName);
-   ks.load(ksInputStream, keyStorePassword.toCharArray());
-   
-   //由keystore对象加载ECKeyPair，并创建Credentials对象
-   Key key = ks.getKey("client", keyPassword.toCharArray());
-   ECKeyPair keyPair = ECKeyPair.create(((ECPrivateKey) key).getS());
-   Credentials credentials = Credentials.create(keyPair);
+    $ keytool -importkeystore -destkeystore client.keystore -srckeystore keystore.p12 -srcstoretype pkcs12 -alias client
 ```

@@ -8,5 +8,4 @@ web3sdk入门
    
    compile.md
    config_web3sdk.md
-   test_web3sdk.md
    faq.md
