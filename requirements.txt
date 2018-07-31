@@ -1,4 +1,4 @@
 sphinx-rtd-theme
-sphinx < 1.7.6
-CommonMark >= 0.7.4
+sphinx == 1.7.6
+CommonMark == 0.7.5
 git+https://github.com/rtfd/recommonmark.git#egg=recommonmark > 0.4.0
