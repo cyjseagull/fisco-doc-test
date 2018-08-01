@@ -1,207 +1,146 @@
-# web3SDK开发示例
+# web3sdk开发示例
+
+下面提供了web3sdk开发示例，从合约编写、合约代码转换成java代码、客户端使用web3sdk部署和调用合约方面简单介绍了基于web3sdk的客户端小程序开发过程。
 
 ## 开发合约代码
 
+### 合约功能和代码设计
+
+```eval_rst
+.. important::
+
+   - 智能合约参考文档：http://solidity.readthedocs.io/en/v0.4.24/
+   - `示例合约下载路径 <https://github.com/FISCO-BCOS/web3sdk/tree/master/tools/Ok.sol>`_
+
+```
+
+```eval_rst
+.. note::    
+   场景设计
+    - 场景：使用智能合约实现转账功能，并记录每笔转账的明细
+    - 主要功能: (1) 转账; (2)查询账户余额
+
+   代码接口设计:
+    - 转账接口(向指定账户转入num元人民币): trans(uint num)
+    - 查询账户余额接口: get()
+
+   数据结构设计:
+    - 账户信息Account: 包括账号信息account和余额信息balance
+    - 转账明细Translog: 包括每笔交易的转账时间time, 转入地址to, 转出地址from和转账金额amount
+    - 主要数据成员
+     (1) Account from: 金额转出账户信息;
+     (2) Account to: 金额转入账户信息
+     (3) Translog[] log数组：记录转账明细的数组   
+```
+**根据以上设计，可实现智能合约代码Demo如下：**
+
+```eval_rst
+
+.. container:: toggle
+
+    .. container:: header
+
+        **展开/折叠智能合约Ok.sol**
+
+    .. literalinclude:: Ok.cpp
+       :language: cpp
+       :linenos:
+
+```
 
 ## 将合约代码转换成java代码
+
+```eval_rst
+.. important::
+    将合约代码转换成java代码前，请确保已经参考 `web3sdk入门  <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/quick-start/index.html>`_  成功搭建了web3sdk环境
+
+```
+
+**web3sdk提供了转换脚本compile.sh，可将合约代码转换成java代码**
+
+```eval_rst
+.. note::
+   - 转换脚本 ``compile.sh`` 存放路径: ``web3sdk/dist/bin/compile.sh``
+   - 转换脚本 ``compile.sh`` 脚本用法：(``${package}``时生成的java代码import的包名)
+    (1) 合约代码转换成不包含国密特性的java代码(所有版本均支持): ``bash compile.sh ${package}``
+    (2) 合约代码转换成支持国密特性的java代码( `1\.2\.0版本 <https://github.com/FISCO-BCOS/web3sdk/tree/V1.2.0>`_ 后支持):``bash compile.sh ${package} 1``
+   - 建议使用 `1\.2\.0版本 <https://github.com/FISCO-BCOS/web3sdk/tree/V1.2.0>`_ 后的web3sdk时，生成支持国密特性的java代码，应用有更大可扩展空间
+
+```
+
+**下面给出代码转换操作示例：**
+
+```bash
+#查看web3sdk提供的测试合约
+#(EvidenceSignersData.sol和Evidence.sol是web3sdk提供的存证示例合约)
+# Ok.sol是上节提到的测试合约
+$ cd /mydata/web3sdk/tool/contracts
+$ ls
+EvidenceSignersData.sol  Evidence.sol  Ok.sol
+
+#进入compile.sh脚本所在路径(设web3sdk代码路径是/mydata/web3sdk)
+$ cd /mydata/web3sdk/dist/bin
+
+#执行compile.sh脚本，将/mydata/web3sdk/dist/contract目录下所有合约代码转换成java代码
+#1. 转换成不支持国密特性的java代码，包名为org.bcos.channel.test
+$ bash compile.sh org.bcos.channel.test
+#2. 转换成支持国密特性的java代码(使用版本号 >= 1.2.0的web3sdk时，推荐使用)
+$ bash compile.sh org.bcos.channel.test 1
+
+#执行以上命令后,编译生成的代码位于/mydata/web3sdk/dist/output目录
+#查看生成的代码文件(Ok.sol编译后的java代码位于org/bcos/channel/test/目录下)
+#([abi](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI)和[bin](http://solidity.readthedocs.io/en/v0.4.24/using-the-compiler.html)文件是编译过程中产生的临时文件)
+$ tree
+.
+├── Evidence.abi
+├── Evidence.bin
+├── EvidenceSignersData.abi
+├── EvidenceSignersDataABI.abi
+├── EvidenceSignersDataABI.bin
+├── EvidenceSignersData.bin
+├── Ok.abi
+├── Ok.bin
+└── org
+    └── bcos
+        └── channel
+            └── test
+                ├── Evidence.java
+                ├── EvidenceSignersData.java
+                └── Ok.java
+```
+
+通过以上操作，将示例合约Ok.sol转化成了java代码Ok.java:
+```eval_rst
+.. container:: toggle
+
+    .. container:: header
+
+        **折叠/展开转换后的java代码Ok.java**
+
+    .. literalinclude:: Ok.java
+       :language: java
+       :linenos:
+
+```
+
+
+
+
+## 编写java程序调用合约代码
+
+```eval_rst
+.. container:: toggle
+
+    .. container:: header
+
+        **折叠/展开java程序TestOk.java**
+
+    .. literalinclude:: TestOk.java
+       :language: java
+       :linenos:
+
+```
 
 ## web3sdk部署合约
 
 ## web3sdk调用合约
-
-
-下面代码演示了通过web3sdk调用合约向FISCO-BCOS发交易的主要流程：
-
-```java
-	package org.bcos.channel.test;
-	import org.bcos.web3j.abi.datatypes.generated.Uint256;
-	import org.bcos.web3j.crypto.Credentials;
-	import org.bcos.web3j.crypto.ECKeyPair;
-	import org.bcos.web3j.crypto.Keys;
-	import org.bcos.web3j.protocol.core.methods.response.EthBlockNumber;
-	import org.bcos.web3j.protocol.core.methods.response.TransactionReceipt;
-	import org.slf4j.Logger;
-	import org.slf4j.LoggerFactory;
-	import org.springframework.context.ApplicationContext;
-	import org.springframework.context.support.ClassPathXmlApplicationContext;
-	import org.bcos.channel.client.Service;
-	import org.bcos.web3j.protocol.Web3j;
-	import org.bcos.web3j.protocol.channel.ChannelEthereumService;
-
-	import java.math.BigInteger;
-
-	public class Ethereum {
-		static Logger logger = LoggerFactory.getLogger(Ethereum.class);
-		
-		public static void main(String[] args) throws Exception {
-			
-			//初始化Service
-			ApplicationContext context = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
-			Service service = context.getBean(Service.class);
-			service.run();
-			
-			System.out.println("开始测试...");			System.out.println("===================================================================");
-			
-			logger.info("初始化AOMP的ChannelEthereumService");
-			ChannelEthereumService channelEthereumService = new ChannelEthereumService();
-			channelEthereumService.setChannelService(service);
-			
-			//使用AMOP消息信道初始化web3j
-			Web3j web3 = Web3j.build(channelEthereumService);
-
-			logger.info("调用web3的getBlockNumber接口");
-			EthBlockNumber ethBlockNumber = web3.ethBlockNumber().sendAsync().get();
-			logger.info("获取ethBlockNumber:{}", ethBlockNumber);
-
-			//初始化交易签名私钥
-			ECKeyPair keyPair = Keys.createEcKeyPair();
-			Credentials credentials = Credentials.create(keyPair);
-
-			//初始化交易参数
-			java.math.BigInteger gasPrice = new BigInteger("30000000");
-			java.math.BigInteger gasLimit = new BigInteger("30000000");
-			java.math.BigInteger initialWeiValue = new BigInteger("0");
-
-			//部署合约
-			Ok ok = Ok.deploy(web3,credentials,gasPrice,gasLimit,initialWeiValue).get();
-			System.out.println("Ok getContractAddress " + ok.getContractAddress());
-			
-			//调用合约接口
-			java.math.BigInteger Num = new BigInteger("999");
-			Uint256 num = new Uint256(Num);
-			TransactionReceipt receipt = ok.trans(num).get();
-			System.out.println("receipt transactionHash" + receipt.getTransactionHash());
-
-			//查询合约数据
-			num = ok.get().get();
-			System.out.println("ok.get() " + num.getValue());
-		}
-	}
-```
-
-以上代码主要包括如下流程：
-
-**(1) 初始化web3j对象，连接到FISCO-BCOS节点**
-
-web3sdk使用AMOP（链上链下）连接fisco-bcos节点：
-
-```java
-	//初始化AMOP的service，初始化函数详见配置文件，sleep(3000)是确保AMOP网络连接初始化完成。注意：org.bcos.channel.client.Service在Java Client端须为单实例，否则与链上节点连接会有问题
-    Service service = context.getBean(Service.class);
-    service.run();
-    Thread.sleep(3000);
-```
-
-**(2) 初始化AMOP的ChannelEthereumService**
-
-ChannelEthereumService通过AMOP的网络连接支持web3j的Ethereum JSON RPC协议。（JSON RPC 参考[JSON RPC API](https://github.com/ethereum/wiki/blob/master/JSON-RPC.md)
-
-```java
-    ChannelEthereumService channelEthereumService = new ChannelEthereumService();
-    channelEthereumService.setChannelService(service);
-```
-
-**(3) 使用ChannelEthereumService初始化web3j对象**
-
-> web3sdk也支持通过http和ipc来初始化web3j对象，但在fisc-bcos中推荐使用AMOP
-
-```java
-    Web3j web3 = Web3j.build(channelEthereumService);
-```
-
-**(4) 调用web3j的rpc接口**
-
-> 样例给出的是获取块高例子，web3j还支持sendRawTransaction、getCode、getTransactionReceipt等等。部分API参看5.3 web3j API说明（ 参考[JSON RPC API](https://github.com/ethereum/wiki/blob/master/JSON-RPC.md)）
-
-```java
-    EthBlockNumber ethBlockNumber = web3.ethBlockNumber().sendAsync().get();
-```
-**(5)初始化交易签名私钥（加载钱包）**
-
-> 样例给出的是新构建一个私钥文件。web3sdk也可以用证书来初始化交易签名私钥，对交易进行签可参考[存证sample](https://github.com/FISCO-BCOS/evidenceSample)。
-
-```java
-import org.bcos.web3j.crypto.GenCredential;
-
-//...省略若干行...
-
-BigInteger bigPrivKey = new BigInteger(privKey, 16);
-ECKeyPair keyPair = ECKeyPair.create(bigPrivKey);
-if (keyPair == null)
-    return null;
-Credentials credentials = Credentials.create(keyPair);
-```
-
-**(6) 部署合约**
- 
-Ok合约代码如下：
-
-```
-pragma solidity ^0.4.2;
-contract Ok{
-    
-    struct Account{
-        address account;
-        uint balance;
-    }
-    
-    struct  Translog {
-        string time;
-        address from;
-        address to;
-        uint amount;
-    }
-    
-    Account from;
-    Account to;
-    
-    Translog[] log;
-
-    function Ok(){
-        from.account=0x1;
-        from.balance=10000000000;
-        to.account=0x2;
-        to.balance=0;
-
-    }
-    function get()constant returns(uint){
-        return to.balance;
-    }
-    function trans(uint num){
-    	from.balance=from.balance-num;
-    	to.balance+=num;
-    	log.push(Translog("20170413",from.account,to.account,num));
-    }
-}
-```
-
-在部署合约前，首先要将合约代码转换成java代码，可参考（5.1）合约编译及java Wrap代码生成。
-web3sdk部署合约的代码如下：
-
-```java
-	//初始化部署合约交易相关参数，正常情况采用demo给出值即可
-    java.math.BigInteger gasPrice = new BigInteger("30000000");
-	java.math.BigInteger gasLimit = new BigInteger("30000000");
-	java.math.BigInteger initialWeiValue = new BigInteger("0");
-
-	//部署合约
-	Ok ok = Ok.deploy(web3,credentials,gasPrice,gasLimit,initialWeiValue).get();
-
-	//更新智能合约成员的值
-	TransactionReceipt receipt = ok.trans(num).get();
-
-	//查询智能合约成员的值
-	num = ok.get().get();
-
-	//交易回调通知:
-	//交易回调通知是指针对合约的交易接口（非constant function和构造函数），通过web3j生成的java代码后，会在原来的java函数基础上，新增了同名的重载函数，与原来的区别在于多了一个TransactionSucCallback的参数。原有接口web3j在底层实现的机制是通过轮训机制来获取交易回执结果的，而TransactionSucCallback是通过服务端，也就是区块链节点来主动push通知，相比之下，会更有效率和时效性。当触发到onResponse的时候，代表这笔交易已经成功上链。使用例子：
-	ObjectMapper objectMapper = ObjectMapperFactory.getObjectMapper();
-	Uint256 num = new Uint256(Num);
-	ok.trans(num, new TransactionSucCallback() {
-	@Override
-    public void onResponse(EthereumResponse response) {
-              TransactionReceipt transactionReceipt = objectMapper.readValue(ethereumResponse.getContent(), TransactionReceipt.class);
-              //解析event log
-   	}
-});
-```
