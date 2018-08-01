@@ -15,8 +15,8 @@
 import sys
 import os
 import sphinx_rtd_theme
-from recommonmark.transform import AutoStructify
 from recommonmark.parser import CommonMarkParser
+from recommonmark.transform import AutoStructify
 
 
 
@@ -291,10 +291,10 @@ texinfo_documents = [
 
 
 # The suffix of source filenames.
-source_suffix = ['.rst', '.md']
-source_parsers = {
-	'.md': CommonMarkParser,
-}
+#source_suffix = ['.rst', '.md']
+#source_parsers = {
+#	'.md': CommonMarkParser,
+#}
 
 #extensions = [
 #	'sphinx_markdown_tables', 
@@ -312,3 +312,9 @@ def setup(app):
             'auto_toc_tree_section': 'Contents',
             }, True)
     app.add_transform(AutoStructify)
+
+# The suffix of source filenames.
+source_suffix = ['.rst', '.md']
+source_parsers = {
+	'.md': CommonMarkParser,
+}
