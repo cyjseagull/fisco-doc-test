@@ -299,11 +299,11 @@ source_parsers = {
 #extensions = [
 #	'sphinx_markdown_tables', 
 #]
-extensions = [
-    'sphinx.ext.todo',
-    'sphinx.ext.mathjax',
-    'sphinx.ext.ifconfig',
-]
+#extensions = [
+#    'sphinx.ext.todo',
+#    'sphinx.ext.mathjax',
+#    'sphinx.ext.ifconfig',
+#]
 
 #github_doc_root = 'https://github.com/rtfd/recommonmark/tree/master/doc/'
 #def setup(app):
