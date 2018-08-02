@@ -14,6 +14,10 @@
 
 import sys
 import os
+
+import shlex
+
+sys.path.insert(0, os.path.abspath('..'))
 import sphinx_rtd_theme
 from recommonmark.parser import CommonMarkParser
 from recommonmark.transform import AutoStructify
@@ -139,7 +143,8 @@ todo_include_todos = True
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+#html_static_path = ['_static']
+html_static_path = []
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -304,6 +309,12 @@ texinfo_documents = [
 #    'sphinx.ext.ifconfig',
 #]
 
+# The suffix of source filenames.
+source_suffix = ['.rst', '.md']
+source_parsers = {
+	'.md': CommonMarkParser,
+}
+
 github_doc_root = 'https://github.com/rtfd/recommonmark/tree/master/doc/'
 def setup(app):
     app.add_config_value('recommonmark_config', {
@@ -312,8 +323,3 @@ def setup(app):
             }, True)
     app.add_transform(AutoStructify)
 
-# The suffix of source filenames.
-source_suffix = ['.rst', '.md']
-source_parsers = {
-	'.md': CommonMarkParser,
-}
