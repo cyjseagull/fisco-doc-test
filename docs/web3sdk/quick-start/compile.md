@@ -10,7 +10,7 @@
        检查web3sdk要连接的FISCO BCOS节点channelPort是否能telnent通，若telnet不通，需要检查网络连通性和安全策略
 ```
 
-## 1 安装依赖软件 
+## 安装依赖软件 
 
 部署web3sdk之前需要安装git, dos2unix依赖软件:
 -  **git**：用于拉取最新代码
@@ -27,7 +27,7 @@ ln -s /usr/bin/todos /usr/bin/unxi2dos
 ln -s /usr/bin/fromdos /usr/
 ```
 
-## 2. 拉取并编译源码
+## 拉取并编译源码
 
 执行如下命令拉取并编译源码：
 ```bash
