@@ -22,6 +22,13 @@ import sphinx_rtd_theme
 from recommonmark.parser import CommonMarkParser
 from recommonmark.transform import AutoStructify
 
+# The suffix of source filenames.
+source_parsers = {
+	'.md': CommonMarkParser,
+}
+source_suffix = ['.rst', '.md']
+
+
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -309,17 +316,14 @@ texinfo_documents = [
 #    'sphinx.ext.ifconfig',
 #]
 
-# The suffix of source filenames.
-source_suffix = ['.rst', '.md']
-source_parsers = {
-	'.md': CommonMarkParser,
-}
-
 github_doc_root = 'https://github.com/rtfd/recommonmark/tree/master/doc/'
 def setup(app):
     app.add_config_value('recommonmark_config', {
-            'url_resolver': lambda url: github_doc_root + url,
-            'auto_toc_tree_section': 'Contents',
-            }, True)
+        'url_resolver': lambda url: github_doc_root + url,
+        'auto_toc_tree_section': 'Contents',
+        'enable_eval_rst': True,
+        'enable_auto_doc_ref': True,
+	}, True)
+
     app.add_transform(AutoStructify)
 
