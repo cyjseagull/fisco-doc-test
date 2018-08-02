@@ -1,6 +1,6 @@
 CommonMark == 0.7.4
-docutils == 0.13.1
+docutils == 0.14
 six>=1.10.0
+sphinx == 1.7.5
 sphinx-rtd-theme
-sphinx == 1.7.0
-recommonmark
+-e git+https://github.com/FireflyTeam/recommonmark#egg=recommonmark
