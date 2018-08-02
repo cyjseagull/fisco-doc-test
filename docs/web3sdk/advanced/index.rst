@@ -4,12 +4,6 @@ web3sdk高级特性
 
 
 
-    .. code-block:: xml
-       :linenos:
-
-       from plone import api
-       ...
-
 .. toctree::
    :maxdepth: 1
 

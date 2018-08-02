@@ -1,8 +1,15 @@
-# web3sdk开发示例
+```eval_rst
+==============================
+ web3sdk开发示例
+=============================
+```
 
 下面提供了web3sdk开发示例，从合约编写、合约代码转换成java代码、客户端使用web3sdk部署和调用合约方面简单介绍了基于web3sdk的客户端小程序开发过程。
 
-## 开发合约代码
+```eval_rst
+开发合约代码
+---------------------------------
+```
 
 ### 合约功能和代码设计
 
@@ -36,15 +43,9 @@
 
 ```eval_rst
 
-.. container:: toggle
-
-    .. container:: header
-
-        **展开/折叠智能合约Ok.sol**
-
-    .. literalinclude:: Ok.cpp
-       :language: cpp
-       :linenos:
+.. literalinclude:: Ok.cpp
+   :language: cpp
+   :linenos:
 
 ```
 
@@ -111,15 +112,10 @@ $ tree
 
 通过以上操作，将示例合约Ok.sol转化成了java代码Ok.java:
 ```eval_rst
-.. container:: toggle
 
-    .. container:: header
-
-        **折叠/展开转换后的java代码Ok.java**
-
-    .. literalinclude:: Ok.java
-       :language: java
-       :linenos:
+.. literalinclude:: Ok.java
+   :language: java
+   :linenos:
 
 ```
 
@@ -129,15 +125,10 @@ $ tree
 ## 编写java程序调用合约代码
 
 ```eval_rst
-.. container:: toggle
 
-    .. container:: header
-
-        **折叠/展开java程序TestOk.java**
-
-    .. literalinclude:: TestOk.java
-       :language: java
-       :linenos:
+.. literalinclude:: TestOk.java
+   :language: java
+   :linenos:
 
 ```
 
