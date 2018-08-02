@@ -27,7 +27,13 @@ web3sdk编译成功后，在web3sdk的dist/conf目录下生成applicationContext
 ```
 
 以下为web3sdk的applicationContext.xml配置案例<br />
+```eval_rst
 
+.. literalinclude:: applicationContext.xml
+   :language: xml
+   :linenos:
+
+```
 ```xml 
 <?xml version="1.0" encoding="UTF-8" ?>
 	<beans xmlns="http://www.springframework.org/schema/beans"
