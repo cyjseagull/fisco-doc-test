@@ -1,4 +1,4 @@
-CommonMark == 0.5.4
+CommonMark == 0.7.5
 docutils
 sphinx ==  1.6.5
 sphinx-rtd-theme
