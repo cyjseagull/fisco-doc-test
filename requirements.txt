@@ -1,5 +1,5 @@
 CommonMark == 0.5.4
 docutils
-sphinx
+sphinx ==  1.6.5
 sphinx-rtd-theme
 -e git+https://github.com/rtfd/recommonmark#egg=recommonmark > 0.4.0
