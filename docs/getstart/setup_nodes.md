@@ -20,7 +20,7 @@ ps -ef |grep fisco-bcos
 
 可看到节点进程
 
-``` log
+``` bash
 XXX
 XXX
 ```
@@ -33,7 +33,7 @@ cat /bcos-data/node0/log/* | grep "topics Send to"
 
 可以看到如下日志，表示日志对应的节点已经与另一个节点连接（Connected to 1 peers），连接正常：
 
-``` log
+``` bash
 XXXX
 XXXX
 ```
