@@ -1,77 +1,80 @@
 # 编译web3sdk
 
-``` important:: **使用web3sdk之前，请进行如下环境检查**
+```eval_rst
+.. important::
 
-     FISCO BCOS节点环境搭建完成：
-       参考 `FISCO-BCOS入门 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/getstart/index.html>`_
-     java: 
-       要求 `jdk1.8+ <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>`_，推荐使用jdk8u141
-     网络连通性检查: 
-       检查web3sdk要连接的FISCO BCOS节点channelPort是否能telnent通，若telnet不通，需要检查网络连通性和安全策略
+   使用web3sdk前，请确保：
+
+    - FISCO BCOS节点环境搭建完成：参考 `FISCO-BCOS入门 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/getstart/index.html>`_
+    - java: 要求 `jdk1.8+ <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>`_，推荐使用jdk8u141
+    - 网络连通: 检查web3sdk连接的FISCO BCOS节点channelPort是否能telnet通，若telnet不通，需要检查网络连通性和安全策略
 ```
-
-## 安装依赖软件 
-
-部署web3sdk之前需要安装git, dos2unix依赖软件:
--  **git**：用于拉取最新代码
--  **dos2unix**: 用于处理windows文件上传到linux服务器时，文件格式无法被linux正确解析的问题；
-可使用如下命令安装这些软件：
-```shell
-[centos]
-sudo yum -y install git
-sudo yum -y install dos2unix
-[ubuntu]
-sudo apt install git
-sudo apt install tofrodos
-ln -s /usr/bin/todos /usr/bin/unxi2dos
-ln -s /usr/bin/fromdos /usr/
-```
-
-## 拉取并编译源码
-
-执行如下命令拉取并编译源码：
-```bash
-#=== 创建并进入web3sdk源码放置目录（假设为/mydata/）=====
-$ mkdir -p /mydata
-$ cd /mydata
-
-#==== 拉取git代码 ====
-$ git clone https://github.com/FISCO-BCOS/web3sdk
-
-#===编译we3bsdk源码，生成dist目录 ===
-$ cd web3sdk
-$ dos2unix *.sh
-$ bash compile.sh
-
-#===编译成功后，web3sdk目录下生成dist文件夹，目录结构如下==========
-$ tree -L 2
-.
-├── build
-│   ├── classes
-│   ├── reports
-│   ├── resources
-│   ├── test-results
-│   └── tmp
-├── build.gradle
-├── ca.crt
-├── client.keystore
-├── dist
-│   ├── apps
-│   ├── bin
-│   ├── contracts
-│   └── lib
-├── README.md
-├── src
-│   ├── main
-│   └── test
-└── tools
-    ├── bin
-    └── contracts
-
-```
-dist目录下各个目录包含的内容如下：
 
 ```eval_rst
+.. admonition:: 安装依赖软件
+   
+   部署web3sdk之前需要安装git, dos2unix依赖软件:
+
+   -  **git**：用于拉取最新代码
+   -  **dos2unix**: 用于处理windows文件上传到linux服务器时，文件格式无法被linux正确解析的问题；
+   可使用如下命令安装这些软件：
+    
+    .. code-block:: bash
+
+       [centos]
+       sudo yum -y install git
+       sudo yum -y install dos2unix
+       [ubuntu]
+       sudo apt install git
+       sudo apt install tofrodos
+       ln -s /usr/bin/todos /usr/bin/unxi2dos
+       ln -s /usr/bin/fromdos /usr/
+
+.. admonition:: 编译源码
+
+   执行如下命令拉取并编译源码：
+
+    .. code-block:: bash
+
+       #=== 创建并进入web3sdk源码放置目录（假设为/mydata/）=====
+       $ mkdir -p /mydata
+       $ cd /mydata
+       
+       #==== 拉取git代码 ====
+       $ git clone https://github.com/FISCO-BCOS/web3sdk
+       
+       #===编译we3bsdk源码，生成dist目录 ===
+       $ cd web3sdk
+       $ dos2unix *.sh
+       $ bash compile.sh
+       
+       #===编译成功后，web3sdk目录下生成dist文件夹，目录结构如下==========
+       $ tree -L 2
+       .
+       ├── build
+       │   ├── classes
+       │   ├── ... 省略若干行...
+       ├── build.gradle
+       ├── dist
+       │   ├── apps  #存放web3sdk.jar
+       │   ├── bin   #存放可执行脚本compile.sh和web3sdk
+       │   ├── contracts  #合约存储目录
+       │   └── lib   #所有jar包存放目录
+       ├── README.md
+       ├── src
+       │   ├── ...省略若干行...
+       └── tools
+       |   ├── bin
+       |   └── contracts
+```
+
+
+
+```eval_rst
+
+.. note::
+   web3sdk编译成功后，会生成dist目录，dist目录主要内容如下：
+
 +---------------+-------------------------------------------------------------------------------------+
 |目录           | 说明                                                                                |
 +===============+=====================================================================================+
