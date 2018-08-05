@@ -109,6 +109,7 @@
        .. code-block:: bash
 
           #执行compile.sh脚本，将/mydata/web3sdk/dist/contract目录下所有合约代码转换成java代码
+          #(com是java代码所属的包，转换后可手动修改)
           $ bash compile.sh com
 
     查看生成的java代码(位于/mydata/web3sdk/dist/output)
@@ -283,9 +284,9 @@
     .. code-block:: bash
        
        # 进入web3sdk源码目录(设web3sdk源码位于/mydata/目录下)
-       cd /mydata/web3sdk
+       $ cd /mydata/web3sdk
        # 使用gradle编译源码(编译成功后会生成/mydata/web3sdk/dist目录)
-       gradle build
+       $ gradle build
    
    运行链上转账小程序
     .. code-block:: bash
