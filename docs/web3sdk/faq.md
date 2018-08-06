@@ -36,4 +36,5 @@
 
    原因分析
     从git载代码（Download ZIP）解压后目录为 **web3sdk-master** , 编译后生成  ``dist/apps/web3sdk-master.jar`` ，与 ``dist/bin/web3sdk`` 中配置的 ``CLASSPATH`` 中的配置项 ``$APP_HOME/apps/web3sdk.jar`` 名称不一致，导致调用工具包将合约代码转换为java代码出错
+
 ```

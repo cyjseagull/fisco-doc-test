@@ -11,7 +11,8 @@ web3sdk提供了访问fisco-bcos节点的java API.
 
 
 +---------+-----------------------------------------------------------------+
-|         |  - 链上链下(AMOP), 为联盟链提供安全高效的消息信道               |
+|         |  - 链上链下( `AMOP <../features/amop/index.html>`_ ),           | 
+|         |    为联盟链提供安全高效的消息信道                               |
 |基本特性 |  - web3j(Web3 Java Ethereum Ðapp API)                           |
 +---------+-----------------------------------------------------------------+         
 |         |  - 交易结构修改：增加对web3sdk使用者透明的randomid和blocklimit; |
@@ -26,5 +27,9 @@ web3sdk提供了访问fisco-bcos节点的java API.
 .. toctree::
    :maxdepth: 1
    
-   quick-start/index.rst
+   env.md
+   compile.md 
+   config_web3sdk.md
+   web3sdk_dev.md 
+   faq.md
    advanced/index.rst

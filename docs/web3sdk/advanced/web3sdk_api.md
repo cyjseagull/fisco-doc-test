@@ -3,7 +3,7 @@
 ```eval_rst
 .. admonition:: 文档目标
 
-   本文档简单介绍**web3sdk常用API**以及**权限控制API**，适用于区块链客户端开发者。
+   本文档简单介绍 **web3sdk常用API** 以及 **权限控制API** ，适用于区块链客户端开发者。
 
 .. admonition:: 参考资料
 

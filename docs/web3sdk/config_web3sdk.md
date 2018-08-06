@@ -42,9 +42,9 @@
 ```
 
 ```eval_rst
-   .. literalinclude:: applicationContext.xml
-      :language: xml
-      :linenos:
+.. literalinclude:: applicationContext.xml
+   :language: xml
+   :linenos:
 ```
 
 ## 测试是否配置成功

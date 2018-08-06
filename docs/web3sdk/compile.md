@@ -1,16 +1,6 @@
 # 编译web3sdk
 
 ```eval_rst
-.. important::
-
-   使用web3sdk前，请确保：
-
-    - FISCO BCOS节点环境搭建完成：参考 `FISCO-BCOS入门 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/getstart/index.html>`_
-    - java: 要求 `jdk1.8+ <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>`_，推荐使用jdk8u141
-    - 网络连通: 检查web3sdk连接的FISCO BCOS节点channelPort是否能telnet通，若telnet不通，需要检查网络连通性和安全策略
-```
-
-```eval_rst
 .. admonition:: 安装依赖软件
    
    部署web3sdk之前需要安装git, dos2unix依赖软件:
@@ -72,8 +62,7 @@
 
 ```eval_rst
 
-.. note::
-   web3sdk编译成功后，会生成dist目录，dist目录主要内容如下：
+web3sdk编译成功后，会生成dist目录，dist目录主要内容如下：
 
 +---------------+-------------------------------------------------------------------------------------+
 |目录           | 说明                                                                                |
