@@ -68,20 +68,36 @@
         
         # 进入源码目录(设位于/mydata目录)
         $ cd /mydata/FISCO-BCOS
-        $ mkdir -p build
-        $ cd build/
-        
-        # [centos]
-        $ cmake3 -DENCRYPTTYPE=ON  -DEVMJIT=OFF -DTESTS=OFF -DMINIUPNPC=OFF .. 
-        # [ubuntu]
-        $ cmake  -DENCRYPTTYPE=ON -DEVMJIT=OFF -DTESTS=OFF -DMINIUPNPC=OFF .. 
-        $ make  #可根据主机cpu灵活配置编译源码的线程数，如：make -j2 , 表示用2个线程编译FISCO BCOS
-        
-        #===安装 fisco-bcos===
-        $ sudo make install
 
-        # 注: 若上次编译失败，本次继续编译时可能会报错，此时需要删掉源码目录下deps/src/目录中缓存包后继续编译，一般包括如下命令:
+        # 调用build.sh脚本编译国密版fisco-bcos
+        $ sudo bash build.sh guomi
+
+
+        # 注: 若上次编译失败，本次继续编译时可能会报错，此时需要删掉源码目录下deps/src/目录中缓存包后重新使用build.sh编译，一般包括如下命令:
         # rm -rf deps/src/*-build
         # rm -rf deps/src/*-stamp
-        # make
 ```
+
+## 国密版nodejs环境配置
+
+FISCO BCOS提供init_guomi_nodejs.sh脚本配置nodejs环境：
+
+```bash
+
+# 进入FISCO BCOS源码目录(设FISCO-BCOS源码位于/mydata目录)
+$ cd /mydata/FISCO-BCOS
+
+# 调用init_guomi_nodejs.sh脚本初始化nodejs环境
+$ cd scripts && bash init_guomi_nodejs.sh
+[web3lib]: init guomi nodejs...
+[tool]: init guomi nodejs...
+[systemcontract]: init guomi nodejs...
+
+# 开启国密开关，设置config.js的encryptType为1
+$ vim /mydata/FISCO-BCOS/web3lib/config.js
+  var encryptType = 1;// 0:ECDSA 1:sm2Withsm3  
+
+```
+
+
+

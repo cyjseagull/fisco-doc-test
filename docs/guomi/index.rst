@@ -41,5 +41,4 @@
    compile.md
    gen_cert.md
    genesis_node.md 
-   quick-start/index.rst
    advanced/index.rst
