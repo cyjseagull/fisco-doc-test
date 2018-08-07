@@ -41,7 +41,7 @@
        - **list段里可以配置多个value，对应多个节点的信息，实现客户端多活通信** 
    
    其他配置
-    另外，调用SystemProxy|AuthorityFilter等系统合约工具时需要配置系统合约地址SystemProxyAddress和GOD账户私钥信息
+    另外，调用SystemProxy|AuthorityFilter等系统合约工具时需要配置系统合约地址SystemProxyAddress和GOD账户私钥信息，GOD账号默认为0x776bd5cf9a88e9437dc783d6414bccc603015cf0,GOD账号私钥默认为bcec428d5205abe0f0cc8a734083908d9eb8563e31f943d760786edf42ad67dd
 
      .. code-block:: xml
 

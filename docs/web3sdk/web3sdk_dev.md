@@ -70,13 +70,13 @@
 ```
 
 
-## 部署合约
+## 搭建并配置java应用
 
 
 ```eval_rst
 .. admonition:: 下载java应用bcosliteclient
 
-   - FISCO-BCOS提供了示例应用bcosliteclient，该应用在 `CounterClient <codes/CounterClient.java>`_ 中提供Counter.sol合约部署和调用功能。应用下载链接如下:
+   - FISCO-BCOS提供了示例应用bcosliteclient，该应用在 `CounterClient.java <codes/CounterClient.java>`_ 中提供Counter.sol合约部署和调用功能。应用下载链接如下:
 
      `bcosliteclient.zip <codes/bcosliteclient.zip>`_ 
 
@@ -111,40 +111,87 @@
 
 .. admonition:: 配置java应用
 
+   参考 `web3sdk配置 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/config_web3sdk.html>`_ 配置java应用，主要配置选项包括：
+
+    .. image:: imgs/javaconfig.png
+       :align: center
 
 ```
 
-
-可使用附件工程里的build.gradle配置文件，包含了基本的java库依赖，在classpath下放置附件工程里applicationContext.xml文件（基于web3sdk1.2版本）,默认的log4j2.xml配置文件默认把所有信息打印到控制台，便于观察，可以根据自己的喜好和需要修改
-
-在项目目录下执行gradle build ，应该会自动拉取所有相关java库到项目的lib目录下。
-
-同时也把fisco bcos的web3sdk.jar复制到项目的lib目录下。
-
-对java项目进行必要的配置，如文本编码方式，build path等，创建一个空的带main入口的java文件，如在org.bcosclient包路径下的bcosliteclient.java，写一两行打印输出什么的，保证这个简单的java项目能正常编译跑通，避免出现开发环境问题。
-
-
-
-
-## 运行应用
+## 部署和调用合约
 
 ```eval_rst
 
+按照上节操作配置好java应用工程后，可调用相关接口部署和调用Counter.sol合约。
+
+.. admonition:: 部署Counter.sol合约
+   
+    .. code-block:: bash
+       
+       # (设bcosliteclient应用位于/mydata目录)
+       $ cd /mydata/bcosliteclient/bcosliteclient/bin
+       # 部署合约
+       $ chmod a+x bcosclient && ./bcosclient deploy
+       -----> start test !
+       init AOMP ChannelEthereumService
+       -->Got ethBlockNumber: 42
+       Deploy contract :null,address :0x8bc176465048ec377a824b7cf36f3cd7452cd093
+       <--start blockNumber = 42,finish blocknmber=43
+
+    由输出结果看出，合约部署成功，合约地址为0x8bc176465048ec377a824b7cf36f3cd7452cd093，且部署成功后，区块链系统区块高度由42增加为43.
+
+
+.. admonition:: 调用Counter.sol合约
+
+    .. code-block:: bash
+          
+       # (设bcosliteclient应用位于/mydata目录)
+       $ cd /mydata/bcosliteclient/bcosliteclient/bin
+       # 调用合约(合约地址是0x0dcdc792fd3e0d39edaf02149b6281dbcab5a0d6)
+       $ chmod a+x bcosclient && ./bcosclient call_contract 0x8bc176465048ec377a824b7cf36f3cd7452cd093
+       -----> start test !
+       init AOMP ChannelEthereumService
+       -->Got ethBlockNumber: 43
+       counter value before transaction:0
+       setname-->oldname:[MyCounter from:0,inc:100],newname=[MyCounter from:0,inc:100]
+       Current Counter:100
+       addcount-->inc:100,before:0,after:100,memo=when tx done,counter inc 100
+       <--start blockNumber = 43,finish blocknmber=44
+
+    由输出结果可看出，计数器合约Counter.sol调用成功后，计数器值增加100，区块链系统块高由43增加为44.
 
 ```
+
 
 ## 总结
 
 
 ```eval_rst
 
-.. note::
+.. admonition:: SDK应用开发步骤总结
+
    根据以上描述，使用web3sdk开发区块链应用主要包括如下过程：
     1. 根据应用功能设计合约代码(包括数据结构和接口)
-    2. 编写智能合约(必要时可以用Nodejs简单验证合约代码逻辑是否正确)
-    3. 将合约代码转换成java代码
-    4. 编写java应用程序，调用合约java接口完成合约部署和调用功能
+    2. 编写智能合约(必要时可以用Nodejs简单验证合约代码逻辑是否正确)，并将合约代码转换成java代码
+    3. 编写java应用，调用合约java接口完成合约部署和调用功能
+    4. 配置并编译java应用
     5. 应用功能测试
+
+.. admonition:: SDK应用部署/调用合约主要流程
+
+   参考 `Counter.java <codes/Counter.java>`_：
+    1. 初始化AMOP的ChannelEthereumService
+    2. 使用AMOP初始化Web3j
+    3. 初始化交易签名密钥对
+    4. 初始化交易参数
+    5. 调用合约接口部署或调用合约
+
+
+.. admonition:: 其他说明
+
+   - 从零开发SDK应用时，可使用eclipse新建java工程，编译配置文件build.gradle可参考bcosliteclient.zip中的编译配置; 
+   - java应用跟目录的lib目录下要存放FISCO BCOS的web3sdk.jar，web3sdk升级时，直接替换java应用的web3sdk.jar到最新即可。
+
 
 .. admonition:: 参考资料
 
@@ -152,11 +199,13 @@
     - AMOP: https://fisco-bcos-test.readthedocs.io/zh/latest/docs/features/amop/index.html
     - web3j JSON-RPC: https://github.com/ethereum/wiki/wiki/JSON-RPC
     - FISCO dev团队提供的示例应用:
-      (1) 存证Demo： https://github.com/FISCO-BCOS/evidenceSample
-      (2) 群/环签名客户端Demo: https://github.com/FISCO-BCOS/sig-service-client
-      (3) depotSample服务Demo: https://github.com/FISCO-BCOS/depotSample
+       (1) 存证Demo： https://github.com/FISCO-BCOS/evidenceSample
+       (2) 群/环签名客户端Demo: https://github.com/FISCO-BCOS/sig-service-client
+       (3) depotSample服务Demo: https://github.com/FISCO-BCOS/depotSample
 
 ```
+
+
 
 
 
