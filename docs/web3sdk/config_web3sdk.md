@@ -93,10 +93,10 @@
 +----------------------+---------------------------------------------------------------------+
 | **privKey**          |  向FISCO BCOS节点发交易或发消息的账户私钥(使用默认配置即可)         |
 +----------------------+---------------------------------------------------------------------+
-|**ChannelConnections**|- caCertPath: CA证书路径，默认为dist/conf/ca.crt                     |
-|                      |- clientKeystorePath: 客户端证书路径，默认为dist/conf/client.keystore|
-|                      |- keystorePassWord: 客户端证书文件访问口令, 默认为123456             | 
-|                      |- clientCertPassWord: 客户端证书验证口令, 默认为123456               |
+|**ChannelConnections**|- caCertPath: CA证书路径，默认为classpath:ca.crt                     |
+|                      |- clientKeystorePath: 客户端证书路径，默认为classpath:client.keystore|
+|                      |- keystorePassWord: 客户端证书文件访问口令                           | 
+|                      |- clientCertPassWord: 客户端证书验证口令                             |
 +----------------------+---------------------------------------------------------------------+
 ```
 
