@@ -2,7 +2,7 @@
 web3sdk
 ################################################################################
 
-.. admonition:: Welcom to web3sdk project :-) 
+.. admonition:: Welcome to web3sdk project :-) 
 
    web3sdk提供访问fisco-bcos节点的java API
 
@@ -31,5 +31,5 @@ web3sdk
    compile.md 
    config_web3sdk.md
    web3sdk_dev.md 
+   advanced/index.rsp
    faq.md
-   advanced/index.rst

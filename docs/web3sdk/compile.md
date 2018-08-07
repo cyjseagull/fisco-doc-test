@@ -1,4 +1,4 @@
-# 编译web3sdk
+# SDK编译
 
 ```eval_rst
 .. admonition:: 安装依赖软件
