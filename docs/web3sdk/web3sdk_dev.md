@@ -28,7 +28,7 @@
 
 .. admonition:: 智能合约代码Counter.sol
     
-    根据合约功能要求可实现智能合约 `Counter.sol <codes/Counter.sol>`_ ，合约代码如下：
+    根据合约功能要求可实现智能合约 `Counter.sol <https://github.com/cyjseagull/fisco-doc-test/blob/master/docs/web3sdk/codes/Counter.sol>`_ ，合约代码如下：
 
     .. literalinclude:: codes/Counter.sol
        :language: cpp
@@ -65,7 +65,7 @@
 
     output目录生成了合约的.abi, .bin等文件，以及org/bcosliteclient/Counter.java文件。这个java文件可以复制到客户端开发环境里，后续建立的java工程的对应的包路径下。Counter.sol对应的Counter.java代码如下：
 
-     `Counter.java <codes/Counter.java>`_ 
+     `Counter.java <https://github.com/cyjseagull/fisco-doc-test/blob/master/docs/web3sdk/codes/Counter.java>`_ 
 
 ```
 
@@ -76,9 +76,9 @@
 ```eval_rst
 .. admonition:: 下载java应用bcosliteclient
 
-   - FISCO-BCOS提供了示例应用bcosliteclient，该应用在 `CounterClient.java <codes/CounterClient.java>`_ 中提供Counter.sol合约部署和调用功能。应用下载链接如下:
+   - FISCO-BCOS提供了示例应用bcosliteclient，该应用在 `CounterClient.java <https://github.com/cyjseagull/fisco-doc-test/blob/master/docs/web3sdk/codes/CounterClient.java>`_ 中提供Counter.sol合约部署和调用功能。应用下载链接如下:
 
-     `bcosliteclient.zip <codes/bcosliteclient.zip>`_ 
+     `bcosliteclient.zip <https://github.com/cyjseagull/fisco-doc-test/raw/master/docs/web3sdk/codes/bcosliteclient.zip>`_ 
 
 .. admonition:: 编译bcosliteclient应用
 
@@ -138,7 +138,7 @@
        Deploy contract :null,address :0x8bc176465048ec377a824b7cf36f3cd7452cd093
        <--start blockNumber = 42,finish blocknmber=43
 
-    由输出结果看出，合约部署成功，合约地址为0x8bc176465048ec377a824b7cf36f3cd7452cd093，且部署成功后，区块链系统区块高度由42增加为43.
+    由输出结果看出，合约部署成功，合约地址为 ``0x8bc176465048ec377a824b7cf36f3cd7452cd093`` ，且部署成功后，区块链系统区块高度由42增加为43.
 
 
 .. admonition:: 调用Counter.sol合约
@@ -147,7 +147,7 @@
           
        # (设bcosliteclient应用位于/mydata目录)
        $ cd /mydata/bcosliteclient/bcosliteclient/bin
-       # 调用合约(合约地址是0x0dcdc792fd3e0d39edaf02149b6281dbcab5a0d6)
+       # 调用合约(合约地址是0x8bc176465048ec377a824b7cf36f3cd7452cd093)
        $ chmod a+x bcosclient && ./bcosclient call_contract 0x8bc176465048ec377a824b7cf36f3cd7452cd093
        -----> start test !
        init AOMP ChannelEthereumService
@@ -179,7 +179,7 @@
 
 .. admonition:: SDK应用部署/调用合约主要流程
 
-   参考 `Counter.java <codes/Counter.java>`_：
+   参考 `CounterClient.java <https://github.com/cyjseagull/fisco-doc-test/blob/master/docs/web3sdk/codes/CounterClient.java>`_：
     1. 初始化AMOP的ChannelEthereumService
     2. 使用AMOP初始化Web3j
     3. 初始化交易签名密钥对
