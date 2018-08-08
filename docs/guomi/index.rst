@@ -43,4 +43,3 @@
    gen_cert.md
    genesis_node.md
    gen_node.md 
-   advanced/index.rst
