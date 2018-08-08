@@ -37,15 +37,15 @@
 
 .. admonition:: 将合约代码Counter.sol转换为java代码Counter.java
 
-    将Counter.sol放置到web3sdk/dist/contracts下，执行合约编译脚本：
-
+    执行将Counter.sol放置到web3sdk/dist/contracts下，执行合约编译脚本：
+    web3sdk提供了 ``counter_compile.sh`` 脚本将Counter.sol转换成Counter.java:
        .. code-block:: bash
 
           # 进入合约编译脚本所在目录 (设web3sdk位于/mydata目录)
           $ cd /mydata/web3sdk/dist/bin
           # 执行合约编译脚本
           # (com是java代码所属的包，转换后可手动修改)
-          $ bash compile.sh  org.bcosliteclient
+          $ bash counter_compile.sh org.bcosliteclient
 
     查看生成的java代码
 
@@ -63,7 +63,8 @@
                   ├── EvidenceSignersData.java
                   └── Ok.java
 
-    output目录生成了合约的.abi, .bin等文件，以及org/bcosliteclient/Counter.java文件。这个java文件可以复制到客户端开发环境里，后续建立的java工程的对应的包路径下。Counter.sol对应的Counter.java代码如下：
+    output目录生成了合约的.abi, .bin等文件，以及org/bcosliteclient/Counter.java文件。这个java文件可以复制到客户端开发环境里，后续建立的java工程的对应的包路径下。若转换成java代码时报错，请参考 `faq【合约转换成java代码出错】 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/faq.html#id2>`_ .
+    Counter.sol对应的Counter.java代码如下：
 
      `Counter.java <https://github.com/cyjseagull/fisco-doc-test/blob/master/docs/web3sdk/codes/Counter.java>`_ 
 
@@ -92,7 +93,7 @@
     
    此时bcosliteclient应用目录如下:
     .. code-block:: bash
-    
+       $ tree -L 2
        ├── bcosliteclient # 编译生成目录
        │   ├── bin        # 包含部署和调用Counter.sol合约的可执行脚本
        │   ├── conf       # 配置文件，包含客户端配置文件applicationContext.xml，客户端证书
@@ -171,8 +172,8 @@
 .. admonition:: SDK应用开发步骤总结
 
    根据以上描述，使用web3sdk开发区块链应用主要包括如下过程：
-    1. 根据应用功能设计合约代码(包括数据结构和接口)
-    2. 编写智能合约(必要时可以用Nodejs简单验证合约代码逻辑是否正确)，并将合约代码转换成java代码
+    1. 根据应用功能设计合约数据结构和接口;
+    2. 编写智能合约，可先用Nodejs简单验证合约代码逻辑是否正确，验证通过后，将合约代码转换成java代码
     3. 编写java应用，调用合约java接口完成合约部署和调用功能
     4. 配置并编译java应用
     5. 应用功能测试

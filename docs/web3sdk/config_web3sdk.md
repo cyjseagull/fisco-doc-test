@@ -12,20 +12,20 @@
 ```eval_rst
 .. admonition:: web3sdk客户端配置
 
-   打开web3sdk的applicationContext.xml(web3sdk/dist/conf目录)文件,部分信息可以先用默认的, **先关注这些配置项** ：
+   打开web3sdk/dist/conf目录的applicationContext.xml文件,部分信息可以先用默认的, **先关注这些配置项** ：
 
    .. image:: imgs/javaconfig.png
       :align: center
    
 
    
-   找到【区块链节点信息配置】一节，配置keystore密码
+   找到 `web3sdk/dist/conf/applicationContext.xml文件的【区块链节点信息配置】 <https://github.com/FISCO-BCOS/web3sdk/blob/master/src/test/resources/applicationContext.xml>`_ 一节，配置keystore密码
      .. code-block:: xml
 
          <property name="keystorePassWord" value="【生成client.keystore时对应的密码】" />
          <property name="clientCertPassWord" value="【生成client.keystore时对应的密码】" />
     
-   **配置节点信息(节点id、ip、端口，和连接的FISCO-BCOS节点必须一致)** 
+   **配置节点信息，请务必注意：节点id、ip、端口，和连接的FISCO-BCOS节点必须一致** 
      .. code-block:: xml
 
         <property name="connectionsStr">
@@ -60,8 +60,9 @@
 ```eval_rst
 .. admonition:: 测试web3sdk与节点连接是否正常
    
-   使用以下命令，调用TestOk测试web3sdk与节点连接是否正常：
-
+   在web3sdk/dist目录下调用TestOk，输出 ``=====INIT ECDSA KEYPAIR From private key===`` 等提示，说明web3sdk与节点连接正常，否则请参考 `faq【dist/bin/web3sdk运行出错】 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/faq.html#id1>`_ .
+   
+   具体测试过程如下：
     .. code-block:: bash
 
        #-----------进入dist目录
@@ -89,14 +90,21 @@
 |                      |   - 0: 不使用国密算法发交易                                         |
 |                      |   - 1: 使用国密算法发交易                                           |
 +----------------------+---------------------------------------------------------------------+
-|**systemProxyAddress**|  配置FISCO BCOS区块链的系统合约地址                                 |
+|**systemProxyAddress**|  系统代理合约地址，对应节点config.json中的systemproxyaddress值      |
 +----------------------+---------------------------------------------------------------------+
-| **privKey**          |  向FISCO BCOS节点发交易或发消息的账户私钥(使用默认配置即可)         |
+| **privKey**          |  GOD账号私钥,对应 `搭链GOD账号环境 <>`_ 产生godInfo.txt的privKey    |
 +----------------------+---------------------------------------------------------------------+
-|**ChannelConnections**|- caCertPath: CA证书路径，默认为classpath:ca.crt                     |
-|                      |- clientKeystorePath: 客户端证书路径，默认为classpath:client.keystore|
-|                      |- keystorePassWord: 客户端证书文件访问口令                           | 
-|                      |- clientCertPassWord: 客户端证书验证口令                             |
+| **account**          |  GOD账号, 对应 `搭建GOD账号环境<>`_ 产生的godInfo.txt的address      |
++----------------------+---------------------------------------------------------------------+
+|**ChannelConnections**|- caCertPath: ca.crt证书路径，默认为classpath:ca.crt                 |
+|                      |- clientKeystorePath: client.keystore证书路径，                      |
+|                      |  默认为classpath:client.keystore                                    | 
+|                      |- keystorePassWord: 生成client.keystore时对应的密码                  | 
+|                      |- clientCertPassWord: 生成client.keystore时对应的密码                |
+|                      |- nodeid:SDK连接的FISCO BCOS节点ID，从节点data/node.nodeid文件获取   | 
+|                      |- ip: SDK连接的FISCO BCOS节点外网ip                                  |
+|                      |- channelPort: SDK连接的FISCO BCOS节点channelPort,                   |
+|                      |  对应config.json的channelPort                                       | 
 +----------------------+---------------------------------------------------------------------+
 ```
 

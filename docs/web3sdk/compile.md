@@ -7,18 +7,20 @@
 
    -  **git**：用于拉取最新代码
    -  **dos2unix**: 用于处理windows文件上传到linux服务器时，文件格式无法被linux正确解析的问题；
-   可使用如下命令安装这些软件：
-    
+   
+   **centos**:  
     .. code-block:: bash
 
-       [centos]
-       sudo yum -y install git
-       sudo yum -y install dos2unix
-       [ubuntu]
-       sudo apt install git
-       sudo apt install tofrodos
-       ln -s /usr/bin/todos /usr/bin/unxi2dos
-       ln -s /usr/bin/fromdos /usr/
+       $ sudo yum -y install git
+       $ sudo yum -y install dos2unix
+    
+   **ubuntu**: 
+    .. code-block:: bash
+
+       $ sudo apt install git
+       $ sudo apt install tofrodos
+       $ ln -s /usr/bin/todos /usr/bin/unxi2dos
+       $ ln -s /usr/bin/fromdos /usr/
 
 .. admonition:: 编译源码
 

@@ -1,5 +1,7 @@
 # FAQ
 
+## dist/bin/web3sdk运行出错
+
 ```eval_rst
 .. admonition:: dist/bin/web3sdk运行出错
    
@@ -14,10 +16,14 @@
      - 检查ca证书ca.crt: 必须与连接的FISCO-BCOS节点的ca.crt一致 
      - 检查客户端证书：解决方法参考 `FISCO-BCOS中client.keystore 的生成方法 <https://github.com/FISCO-BCOS/web3sdk/issues/20>`_
 
+```
 
+## 合约转换成java代码出错
+
+```eval_rst
 .. admonition:: 合约转换成java代码出错
-
-   解决方法
+   
+   参考 `web3sdk issue1: 【使用工具包生成合约Java Wrap代码时报错】 <https://github.com/FISCO-BCOS/web3sdk/issues/1>`_ ，具体解决方法:
     .. code-block:: bash
 
        #------进入web3sdk代码目录(设web3sdk是/mydata/web3sdk-master下)
