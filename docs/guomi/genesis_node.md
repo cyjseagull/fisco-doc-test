@@ -102,5 +102,42 @@ Example: #使用示例
 
 ## 启动创世节点
 
+节点目录下提供start.sh启动创世节点：
+
+```bash
+# 进入创世节点目录
+$ cd /mydata/node0
+
+# 确认fisco-bcos是国密版本
+$ fisco-bcos --version
+FISCO-BCOS version 1.3.1-gm # 有-gm表明是国密版本
+FISCO-BCOS network protocol version: 63
+Client database version: 12041
+Build: ETH_BUILD_PLATFORM/ETH_BUILD_TYPE
+
+# 启动创世节点
+$ ./start.sh
+```
+
+
 ## check创世节点环境
+
+启动创世节点后，需要check创世节点进程和是否正常出块：
+
+```bash
+# 进入创世节点目录
+$ cd /mydata/node0
+
+# check进程状态
+$ ps aux | grep fisco
+root     20995  0.6  0.1 2171448 14280 pts/3   Sl   09:15   0:01 ./fisco-bcos --genesis /mydata/node0/genesis.json --config /mydata/node0/config.json
+
+# check创世节点是否正常出块
+$ tail -f log_2018080809.log | grep +++
+INFO|2018-08-08 09:21:18:109|+++++++++++++++++++++++++++ Generating seal onff05d8b4386fc1a058b9c9da7816fa1e340d0bffcd008424104b2ed48740ace4#1tx:0,maxtx:1000,tq.num=0time:1533691278109
+INFO|2018-08-08 09:21:19:138|+++++++++++++++++++++++++++ Generating seal on7e78c3a28b652a243ec2d2ffe2c3c927469bddef53cfaf9cab9128b7930f3c50#1tx:0,maxtx:1000,tq.num=0time:1533691279138
+
+```
+通过以上输出可看出，创世节点进程已启动，且出块正常。
+
 
