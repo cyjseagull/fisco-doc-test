@@ -14,9 +14,19 @@
 
 import sys
 import os
+
+import shlex
+
+#sys.path.insert(0, os.path.abspath('..'))
 import sphinx_rtd_theme
-from recommonmark.transform import AutoStructify
 from recommonmark.parser import CommonMarkParser
+from recommonmark.transform import AutoStructify
+
+# The suffix of source filenames.
+source_parsers = {
+	'.md': CommonMarkParser,
+}
+source_suffix = ['.rst', '.md']
 
 
 
@@ -44,7 +54,7 @@ templates_path = ['_templates']
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'docs/index'
+master_doc = 'index'
 
 # General information about the project.
 project = u'FISCO BCOS'
@@ -140,7 +150,8 @@ todo_include_todos = True
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+#html_static_path = ['_static']
+html_static_path = []
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -291,24 +302,28 @@ texinfo_documents = [
 
 
 # The suffix of source filenames.
-source_suffix = ['.rst', '.md']
-source_parsers = {
-	'.md': CommonMarkParser,
-}
+#source_suffix = ['.rst', '.md']
+#source_parsers = {
+#	'.md': CommonMarkParser,
+#}
 
 #extensions = [
 #	'sphinx_markdown_tables', 
 #]
-extensions = [
-    'sphinx.ext.todo',
-    'sphinx.ext.mathjax',
-    'sphinx.ext.ifconfig',
-]
+#extensions = [
+#    'sphinx.ext.todo',
+#    'sphinx.ext.mathjax',
+#    'sphinx.ext.ifconfig',
+#]
 
 github_doc_root = 'https://github.com/rtfd/recommonmark/tree/master/doc/'
 def setup(app):
     app.add_config_value('recommonmark_config', {
-            'url_resolver': lambda url: github_doc_root + url,
-            'auto_toc_tree_section': 'Contents',
-            }, True)
+        'url_resolver': lambda url: github_doc_root + url,
+        'auto_toc_tree_section': 'Contents',
+        'enable_eval_rst': True,
+        'enable_auto_doc_ref': True,
+	}, True)
+
     app.add_transform(AutoStructify)
+

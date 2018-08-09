@@ -120,28 +120,3 @@ tail -f /mydata/node0/log/info* |grep +++
 INFO|2017-11-23 15:04:12|+++++++++++++++++++++++++++ Generating seal onc04e60aa22d6348f323de53031744120206f317d3abcb8b3a90be060284b8a5b#1tx:0time:1511420652136
 INFO|2017-11-23 15:04:14|+++++++++++++++++++++++++++ Generating seal on08679a397f9a2d100e0c63bfd33a7c7311401e282406b87fd6c607cfb2dde2c6#1tx:0time:1511420654148
 ```
-
-
-
-
-
-
-
-
-
-生成节点身份、证书
-
-``` shell
-#sh generate_node_cert.sh -a 机构名 -d 机构证书所在目录 -n 节点名 -o 节点文件夹的data目录
-sh generate_node_cert.sh -a agency0 -d /mydata/agency0 -n node0 -o /mydata/node0/data
-sh generate_node_cert.sh -a agency0 -d /mydata/agency0 -n node1 -o /mydata/node1/data
-sh generate_node_cert.sh -a agency0 -d /mydata/agency0 -n node2 -o /mydata/node2/data
-```
-## 配置链
-
-给每个节点生成创世块文件
-
-``` shell
-#sh generate_genesis.sh -d 创世节点 -o 所有节点的目录
-sh generate_genesis.sh -d /mydata/node0 -o /mydata/node0,/mydata/node1,/mydata/node2
-```

@@ -8,8 +8,14 @@ FISCO BCOS平台基于现有的BCOS开源项目进行开发，聚焦于金融行
 为了让大家更好的了解FISCO BCOS区块链开源平台的使用方法。本文档按照Step By Step的步骤详细介绍了FISCO BCOS区块链的构建、安装、启动，智能合约部署、调用等初阶用法，还包括多节点组网、系统合约等高阶内容的介绍。
 本文档不介绍FISCO BCOS区块链设计理念及思路，详情请参看白皮书。
 
-
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-   docs/index.rst
+
+   docs/getstart/index.rst
+   docs/web3sdk/index.rst
+   docs/tools/index.rst
+   docs/guomi/index.rst
+   docs/features/index.rst
+   docs/applications/index.rst
+   docs/introduction/index.rst
