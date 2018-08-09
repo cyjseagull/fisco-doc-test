@@ -48,20 +48,19 @@
           $ bash counter_compile.sh org.bcosliteclient
 
     查看生成的java代码
+      .. code-block:: bash
 
-       .. code-block:: bash
-          
-          $ cd /mydata/web3sdk/dist/output
-          $ tree
-          # ...此处省略若干输出...
-          ├── Counter.abi
-          ├── Counter.bin
-          └── org
-              └── bcosliteclient
-                  ├── Counter.java
-                  ├── Evidence.java
-                  ├── EvidenceSignersData.java
-                  └── Ok.java
+         $ cd /mydata/web3sdk/dist/output
+         $ tree
+         # ...此处省略若干输出...
+         ├── Counter.abi  # Counter.sol编译生成的abi文件
+         ├── Counter.bin  # Counter.sol编译生成的bin文件
+         └── org
+            └── bcosliteclient
+                ├── Counter.java # Counter.sol转换成的java代码
+                ├── Evidence.java
+                ├── EvidenceSignersData.java
+                └── Ok.java
 
     output目录生成了合约的.abi, .bin等文件，以及org/bcosliteclient/Counter.java文件。这个java文件可以复制到客户端开发环境里，后续建立的java工程的对应的包路径下。若转换成java代码时报错，请参考 `faq【合约转换成java代码出错】 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/faq.html#id2>`_ .
     Counter.sol对应的Counter.java代码如下：
@@ -93,6 +92,7 @@
     
    此时bcosliteclient应用目录如下:
     .. code-block:: bash
+
        $ tree -L 2
        ├── bcosliteclient # 编译生成目录
        │   ├── bin        # 包含部署和调用Counter.sol合约的可执行脚本
@@ -176,7 +176,6 @@
    一个完整的build.gradle示例如下：
 
 .. literalinclude:: codes/build.gradle
-
    :language: cpp
    :linenos:
 
