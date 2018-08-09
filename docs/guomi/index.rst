@@ -43,3 +43,5 @@
    gen_cert.md
    genesis_node.md
    gen_node.md 
+   deploy_system_contract.md
+   join_leader.md 

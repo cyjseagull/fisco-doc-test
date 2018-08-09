@@ -163,6 +163,23 @@
 
 ```
 
+## gradle文件配置说明
+
+```eval_rst::
+
+.. admonition:: gradle配置文件说明
+   
+   应用SDK的【build.gradle】要通过【compile】和【runtime】添加web3sdk.jar依赖和应用外部依赖库：
+    .. image:: imgs/build-gradle.png
+       :align: center
+    
+   一个完整的build.gradle示例如下：
+
+.. literalinclude:: codes/build.gradle
+   :language: cpp
+   :linenos:
+
+```
 
 ## 总结
 
@@ -186,7 +203,6 @@
     3. 初始化交易签名密钥对
     4. 初始化交易参数
     5. 调用合约接口部署或调用合约
-
 
 .. admonition:: 其他说明
 
