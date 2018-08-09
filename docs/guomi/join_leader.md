@@ -117,6 +117,6 @@ INFO|2018-08-09 15:53:24:480|+++++++++++++++++++++++++++ Generating seal on5025f
 .. admonition:: congratulations ^V^
 
    至此，您已经成功搭建一条可用的国密版FISCO-BCOS链 
-   - 更高级的使用方法请参考 `FISCO-BCOS高级特性 <TODO>`_
-   - 国密版web3sdk配置和使用方法请参考 `国密版web3sdk <TODO>`_
+    - 更高级的使用方法请参考 `FISCO-BCOS高级特性 <TODO>`_
+    - 国密版web3sdk配置和使用方法请参考 `国密版web3sdk <TODO>`_
 ```
