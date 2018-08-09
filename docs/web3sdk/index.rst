@@ -31,5 +31,5 @@ web3sdk
    compile.md 
    config_web3sdk.md
    web3sdk_dev.md 
-   advanced/index.rsp
+   advanced/index.rst
    faq.md
