@@ -30,22 +30,21 @@
     
     根据合约功能要求可实现智能合约 `Counter.sol <https://github.com/cyjseagull/fisco-doc-test/blob/master/docs/web3sdk/codes/Counter.sol>`_ ，合约代码如下：
 
-    .. literalinclude:: codes/Counter.sol
-       :language: cpp
-       :linenos:
+     .. literalinclude:: codes/Counter.sol
+        :language: cpp
+        :linenos:
 
 
 .. admonition:: 将合约代码Counter.sol转换为java代码Counter.java
 
-    执行将Counter.sol放置到web3sdk/dist/contracts下，执行合约编译脚本：
     web3sdk提供了 ``counter_compile.sh`` 脚本将Counter.sol转换成Counter.java:
-       .. code-block:: bash
-
-          # 进入合约编译脚本所在目录 (设web3sdk位于/mydata目录)
-          $ cd /mydata/web3sdk/dist/bin
-          # 执行合约编译脚本
-          # (com是java代码所属的包，转换后可手动修改)
-          $ bash counter_compile.sh org.bcosliteclient
+     .. code-block:: bash
+        
+        # 进入合约编译脚本所在目录 (设web3sdk位于/mydata目录)
+        $ cd /mydata/web3sdk/dist/bin
+        # 执行合约编译脚本
+        # (com是java代码所属的包，转换后可手动修改)
+        $ bash counter_compile.sh org.bcosliteclient
 
     查看生成的java代码
       .. code-block:: bash
@@ -62,7 +61,12 @@
                 ├── EvidenceSignersData.java
                 └── Ok.java
 
-    output目录生成了合约的.abi, .bin等文件，以及org/bcosliteclient/Counter.java文件。这个java文件可以复制到客户端开发环境里，后续建立的java工程的对应的包路径下。若转换成java代码时报错，请参考 `faq【合约转换成java代码出错】 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/faq.html#id2>`_ .
+    output目录生成了合约的.abi, .bin等文件，以及org/bcosliteclient/Counter.java文件。
+    
+    这个java文件可以复制到客户端开发环境里，后续建立的java工程的对应的包路径下。
+    
+    若转换成java代码时报错，请参考 `faq【合约转换成java代码出错】 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/faq.html#id2>`_ .
+    
     Counter.sol对应的Counter.java代码如下：
 
      `Counter.java <https://github.com/cyjseagull/fisco-doc-test/blob/master/docs/web3sdk/codes/Counter.java>`_ 
@@ -114,8 +118,8 @@
 
    参考 `web3sdk配置 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/config_web3sdk.html>`_ 配置java应用，主要配置选项包括：
 
-    .. image:: imgs/javaconfig.png
-       :align: center
+     .. image:: imgs/javaconfig.png
+        :align: center
 
 ```
 
@@ -123,13 +127,12 @@
 
 ```eval_rst
 
-按照上节操作配置好java应用工程后，可调用相关接口部署和调用Counter.sol合约。
-
 .. admonition:: 部署Counter.sol合约
-   
+
+   按照上节操作配置好java应用工程后，可调用相关接口部署和调用Counter.sol合约。
     .. code-block:: bash
        
-       # (设bcosliteclient应用位于/mydata目录)
+       # 设bcosliteclient应用位于/mydata目录
        $ cd /mydata/bcosliteclient/bcosliteclient/bin
        # 部署合约
        $ chmod a+x bcosclient && ./bcosclient deploy
@@ -143,10 +146,11 @@
 
 
 .. admonition:: 调用Counter.sol合约
-
+   
+   使用 ``bcosliteclient/bcosliteclient/bin`` 目录下的 ``bcosclient`` 脚本调用Counter.sol合约：
     .. code-block:: bash
           
-       # (设bcosliteclient应用位于/mydata目录)
+       # 设bcosliteclient应用位于/mydata目录
        $ cd /mydata/bcosliteclient/bcosliteclient/bin
        # 调用合约(合约地址是0x8bc176465048ec377a824b7cf36f3cd7452cd093)
        $ chmod a+x bcosclient && ./bcosclient call_contract 0x8bc176465048ec377a824b7cf36f3cd7452cd093
