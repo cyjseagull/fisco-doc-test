@@ -1,5 +1,5 @@
 ################################################################################
-FISCO-BCOS 快速入门
+FISCO-BCOS 使用指南
 ################################################################################
 
 .. toctree::
@@ -7,7 +7,6 @@ FISCO-BCOS 快速入门
    
    environment.rst
    compile_and_install.md
-   cert_config.md
-   genesis_node_startup.md
-   node_startup.md
+   chain_setting.md
+   setup_nodes.md
    

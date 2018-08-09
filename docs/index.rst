@@ -12,6 +12,7 @@ FISCO BCOS平台基于现有的BCOS开源项目进行开发，聚焦于金融行
    :maxdepth: 1
 
    getstart/index.rst
+   usage/index.rst
    web3sdk/index.rst
    guomi/index.rst
    advanced_features/index.rst

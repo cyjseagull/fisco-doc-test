@@ -1,4 +1,4 @@
-# 编译安装FISCO-BCOS
+# 程序部署
 ## 获取代码
 
 新建一个目录，例如/mydata
@@ -23,4 +23,10 @@ cd FISCO-BCOS
 sh build.sh
 ```
 
-安装成功后，会XXXXX
+检查是否安装成功
+
+```shell
+fisco-bcos --version 
+#成功: FISCO-BCOS version x.x.x
+```
+
