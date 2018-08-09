@@ -38,7 +38,7 @@
        #===编译we3bsdk源码，生成dist目录 ===
        $ cd web3sdk
        $ dos2unix *.sh
-       $ bash compile.sh
+       $ . ./compile.sh
        
        #===编译成功后，web3sdk目录下生成dist文件夹，目录结构如下==========
        $ tree -L 2
