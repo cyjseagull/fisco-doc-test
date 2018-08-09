@@ -165,7 +165,7 @@
 
 ## gradle文件配置说明
 
-```eval_rst::
+```eval_rst
 
 .. admonition:: gradle配置文件说明
    
@@ -176,6 +176,7 @@
    一个完整的build.gradle示例如下：
 
 .. literalinclude:: codes/build.gradle
+
    :language: cpp
    :linenos:
 
