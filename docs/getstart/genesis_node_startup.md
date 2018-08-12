@@ -17,16 +17,16 @@ sh generate_genesis_node.sh  -o /mydata -n node0 -l 127.0.0.1 -r 8545 -p 30303 -
 ``` log
 Genesis node generate success!
 -----------------------------------------------------------------
-Name:   node0
-Agency:   test_agency
-CA hash:  B33BDF6F9E4B3703
-Node ID:  cd9992e71c1a68fba0a5d3fd61b94a61a12da859e279231fc747c0016867795a38eebaacb608032b59d9516b093186aed34ccd5015444b679df50c2b3b99e643
-RPC address:  127.0.0.1:8545
-P2P address:  127.0.0.1:30303
-Channel address: 127.0.0.1:8891
-SystemProxy address: 0x919868496524eedc26dbb81915fa1547a20f8998
-Node dir:  /mydata/node0
-State:   Stop
+Name:			node0
+Agency:			test_agency
+CA hash:		A809F269BEE93DA4
+Node ID:		d23058c33577f850832e47994df495c674ba66273df2fcb1e6ee7d7e1dbd7be78be2f7b302c9d15842110b3db6239da2aa98ddf68e512b452df748d3d3e4c1cd
+RPC address:		127.0.0.1:8545
+P2P address:		127.0.0.1:30303
+Channel address:	127.0.0.1:8891
+SystemProxy address:	0x919868496524eedc26dbb81915fa1547a20f8998
+Node dir:		/mydata/node0
+State:			Stop
 -----------------------------------------------------------------
 ```
 
@@ -35,8 +35,6 @@ State:   Stop
 ``` log
 RPC address:  127.0.0.1:8545
 ```
-
-
 
 ## 启动创世节点
 
@@ -48,8 +46,6 @@ sh start.sh
 #关闭用 sh stop.sh
 ```
 
-
-
 ## 创世节点加入联盟
 
 让创世节点成为参与共识的第一个成员
@@ -58,7 +54,7 @@ sh start.sh
 cd /mydata/FISCO-BCOS/tools/scripts/
 ```
 
-将tools下的脚本操作对象指向链上某个节点（此链上只有一个创世节点）
+设置需要操作的链的RPC端口（此时链上只有一个创世节点），输入y回车确认。
 
 ``` shell
 #sh set_proxy_address.sh -o 节点的RPC address
@@ -87,24 +83,8 @@ ps -ef |grep fisco-bcos
 若看到创世节点进程，表示创世节点启动成功
 
 ``` log
-root  6227  6224  3 17:22 pts/2    00:00:02 fisco-bcos --genesis /mydata/node0/genesis.json --config /bcos-data/node0/config.json
+app  67232      1  2 14:51 ?        00:00:03 fisco-bcos --genesis /mydata/node0/genesis.json --config /mydata/node0/config.json
 ```
-
-### 验证已加入联盟
-
-查看联盟成员
-
-``` shell
-babel-node XXXX
-```
-
-若看到节点在列表中，表示此节点已加入联盟，已参与共识
-
-``` log
-
-```
-
-
 
 ### 验证可共识
 
@@ -114,9 +94,9 @@ babel-node XXXX
 tail -f /mydata/node0/log/info* |grep +++
 ```
 
-可看到周期性的出现如下日志，表示节点间在周期性的进行共识，节点运行正确
+等待一段时间，可看到周期性的出现如下日志，表示节点间在周期性的进行共识，节点运行正确
 
 ``` log
-INFO|2017-11-23 15:04:12|+++++++++++++++++++++++++++ Generating seal onc04e60aa22d6348f323de53031744120206f317d3abcb8b3a90be060284b8a5b#1tx:0time:1511420652136
-INFO|2017-11-23 15:04:14|+++++++++++++++++++++++++++ Generating seal on08679a397f9a2d100e0c63bfd33a7c7311401e282406b87fd6c607cfb2dde2c6#1tx:0time:1511420654148
+INFO|2018-08-10 14:53:33:083|+++++++++++++++++++++++++++ Generating seal on9272a2f7d8fba7e68b1927912f97797447cf94d92fa78222bb8a2892ee814ba8#31tx:0,maxtx:0,tq.num=0time:1533884013083
+INFO|2018-08-10 14:53:34:094|+++++++++++++++++++++++++++ Generating seal onf007c276c3f2b136fe84e40a84a54eda1887a47192ec7e2a4feff6407293665d#31tx:0,maxtx:0,tq.num=0time:1533884014094
 ```
