@@ -2,32 +2,35 @@
 
 ```eval_rst
 .. admonition:: 注意事项
-   
-   节点入网前，请确保：
-    - 系统合约被正确的部署，参考 `部署系统合约 <>`_ 
-    - 所有节点的config.json的systemproxyaddress字段已经配置了相应的系统代理合约地址
-    - 节点在配置了systemproxyaddress字段后，已经重启使得系统合约生效
-    - /mydata/FISCO-BCOS/web3lib/下的config.js已经正确的配置了节点的RPC端口
-    - 节点入网时，必须先注册创世节点
+   节点入网前，请确保首先注册创世节点
 ```
 
 ## 创世节点入网
 
-创世节点入网过程如下：
+FISCO BCOS提供`register_node.sh`工具用于节点入网，创世节点入网过程如下：
 
 ```bash
-$ babel-node tool.js NodeAction registerNode /mydata/node0/data/gmnode.json 
-{ HttpProvider: 'http://127.0.0.1:8545',
+# 进入脚本所在目录(设FISCO-BCOS位于/mydata目录)
+$ cd /mydata/FISCO-BCOS/tools/scripts
+
+# -d: 创世节点所在目录
+# -g: 创世节点类型是国密版FISCO-BCOS
+$./register_node.sh -d /mydata/node0 -g
+RUN: babel-node tool.js NodeAction register /mydata/node0/data/gmnode.json 
+{ HttpProvider: 'http://127.0.0.1:8546',
   Ouputpath: './output/',
   EncryptType: 1,
   privKey: 'bcec428d5205abe0f0cc8a734083908d9eb8563e31f943d760786edf42ad67dd',
   account: '0x64fa644d2a694681bd6addd6c5e36cccd8dcdde3' }
 Soc File :NodeAction
-Func :registerNode
+Func :register
 SystemProxy address 0xee80d7c98cb9a840b9c4df742f61336770951875
-node.json=../../node0/data/gmnode.json
+node.json=/mydata/node0/data/gmnode.json
 NodeAction address 0x22af893607e84456eb5aea0b277e4dffe260fdcd
-send transaction success: 0x160a2e8b92349f891e97239d7a0e799c7b729881b9d6caf4ecd0117e50999414
+send transaction success: 0xbfc83175af76dd7e466b75ecd76cd6fd328a4b700233943a81187ea72b0c6bf7
+SUCCESS execution of command: babel-node tool.js NodeAction register /mydata/node0/data/gmnode.json 
+/data/chenyujie/guomi/FISCO-BCOS/tools/scripts
+Register Node Success!
 
 # 创世节点配置/mydata/node0/data/gmnode.json如下：
 $ cat /mydata/node0/data/gmnode.json
@@ -44,27 +47,81 @@ $ cat /mydata/node0/data/gmnode.json
 
 普通节点入网过程如下：
 
-```
-$ babel-node tool.js NodeAction registerNode ../../node1/data/gmnode.json  
+```bash
+# 进入脚本所在目录(设FISCO-BCOS位于/mydata目录)
+$ cd /mydata/FISCO-BCOS/tools/scripts
+# -d: 普通节点目录
+# -g：普通节点类型是国密版FISCO-BCOS
+$ ./register_node.sh -d /mydata/node1 -g       
+RUN: babel-node tool.js NodeAction register /mydata/node1/data/gmnode.json 
 { HttpProvider: 'http://127.0.0.1:8545',
   Ouputpath: './output/',
   EncryptType: 1,
   privKey: 'bcec428d5205abe0f0cc8a734083908d9eb8563e31f943d760786edf42ad67dd',
   account: '0x64fa644d2a694681bd6addd6c5e36cccd8dcdde3' }
 Soc File :NodeAction
-Func :registerNode
+Func :register
 SystemProxy address 0xee80d7c98cb9a840b9c4df742f61336770951875
-node.json=../../node1/data/gmnode.json
+node.json=/mydata/node1/data/gmnode.json
 NodeAction address 0x22af893607e84456eb5aea0b277e4dffe260fdcd
-send transaction success: 0x3ff3a0d795f8dd6c896a63890aef3d9b2e733854194fcd0556f1883a02c7a766
+send transaction success: 0xc67d4e08a03a7094244e3de100979e1f0e50b7f9d83be5691d3833e3ddfcb97b
+SUCCESS execution of command: babel-node tool.js NodeAction register /mydata/node1/data/gmnode.json { HttpProvider: 'http://127.0.0.1:8545',
+  Ouputpath: './output/',
+  EncryptType: 1,
+  privKey: 'bcec428d5205abe0f0cc8a734083908d9eb8563e31f943d760786edf42ad67dd',
+  account: '0x64fa644d2a694681bd6addd6c5e36cccd8dcdde3' }
+Soc File :NodeAction
+Func :register
+SystemProxy address 0xee80d7c98cb9a840b9c4df742f61336770951875
+node.json=/mydata/node1/data/gmnode.json
+
+/data/chenyujie/guomi/FISCO-BCOS/tools/scriptsNodeAction address 0x22af893607e84456eb5aea0b277e4dffe260fdcd
+# 查看记账节点信息
+RUN: babel-node tool.js NodeAction all
+{ HttpProvider: 'http://127.0.0.1:8545',
+  Ouputpath: './output/',
+  EncryptType: 1,
+  privKey: 'bcec428d5205abe0f0cc8a734083908d9eb8563e31f943d760786edf42ad67dd',
+  account: '0x64fa644d2a694681bd6addd6c5e36cccd8dcdde3' }send transaction success: 0x1f923378d2640acad78378ee2f21002213cb9f81dfcb7b0f2e42ea5a960a08e6
+
+Soc File :NodeAction
+Func :all
+SystemProxy address 0xee80d7c98cb9a840b9c4df742f61336770951875
+NodeAction address 0x22af893607e84456eb5aea0b277e4dffe260fdcd
+NodeIdsLength= 2
+----------node 0---------
+id=3d4fe4c876cac411d4c7180b5794198fb3b4f3e0814156410ae4184e0a51097a01bf63e431293f30af0c01a57f24477ad1704d8f676bc7e345526ba1735db6a7
+name=SUCCESS execution of command: babel-node tool.js NodeAction register /mydata/node1/data/gmnode.json 
+/data/chenyujie/guomi/FISCO-BCOS/tools/scripts
+RUN: babel-node tool.js NodeAction all
+
+agency=
+caHash=D14983471F0AC975
+Idx=0
+blocknumber=30
+----------node 1---------
+id=9af16c4543919589982932b57bb97b162f8eba522037a95e7b013780911c2b0ffdef775b5387b2a4f4867b1271a06357d15055cde76a0b49e4714b691fdd368a
+name=
+agency=
+caHash=95F1A5C35D8CFFA7
+Idx=1
+blocknumber=31
+SUCCESS execution of command: babel-node tool.js NodeAction all{ HttpProvider: 'http://127.0.0.1:8545',
+  Ouputpath: './output/',
+  EncryptType: 1,
+  privKey: 'bcec428d5205abe0f0cc8a734083908d9eb8563e31f943d760786edf42ad67dd',
+  account: '0x64fa644d2a694681bd6addd6c5e36cccd8dcdde3' }
+Soc File :NodeAction
+Func :all
 ```
 
 ## 查看节点入网情况
 
-使用`babel-node tool.js NodeAction all`命令查看节点入网情况：
+FISCO-BCOS提供了`node_all.sh`命令查看记账节点信息：
 
 ```bash
-babel-node tool.js NodeAction all
+ ./node_all.sh 
+RUN: babel-node tool.js NodeAction all
 { HttpProvider: 'http://127.0.0.1:8545',
   Ouputpath: './output/',
   EncryptType: 1,
@@ -76,18 +133,20 @@ SystemProxy address 0xee80d7c98cb9a840b9c4df742f61336770951875
 NodeAction address 0x22af893607e84456eb5aea0b277e4dffe260fdcd
 NodeIdsLength= 2
 ----------node 0---------
-id=730195b08dda7b027c9ba5bec8ec19420aa996c7ce72fa0954711d46c1c66ae8c2eeaa5f84d1f7766f21ba3dc822bc6d764fbee14034b19a0cf1c69c7f75e537
+id=3d4fe4c876cac411d4c7180b5794198fb3b4f3e0814156410ae4184e0a51097a01bf63e431293f30af0c01a57f24477ad1704d8f676bc7e345526ba1735db6a7
 name=
 agency=
-caHash=AF33DEB4033C0D47
+caHash=D14983471F0AC975
 Idx=0
 blocknumber=30
 ----------node 1---------
-id=6f77e654e2a7a5487696c0b63e2433f01575c4d1d0a6a87e2a4d5f33e4d53afe3f8b479a70426918a99fde426890d88c88ed968fef90ea789c69a2866b04312b
+id=9af16c4543919589982932b57bb97b162f8eba522037a95e7b013780911c2b0ffdef775b5387b2a4f4867b1271a06357d15055cde76a0b49e4714b691fdd368a
 name=
 agency=
-caHash=D304175CD76AF6B1
+caHash=95F1A5C35D8CFFA7
 Idx=1
+blocknumber=31
+SUCCESS execution of command: babel-node tool.js NodeAction all
 ```
 
 从输出信息可看出，创世节点和普通节点均成功入网。
@@ -97,18 +156,18 @@ Idx=1
 使用如下命令检查创世节点入网情况，若输出`+++`等打包信息，表明创世节点入网成功：
 
 ```bash
-$ bash check_seal.sh /mydata/node0
-INFO|2018-08-09 15:52:55:155|+++++++++++++++++++++++++++ Generating seal on4ffa4ee789a9efdeefe8c48455bbaaf39d8dfc914fba5638a1e0ade595e72cb2#32tx:0,maxtx:0,tq.num=0time:1533801175155
-INFO|2018-08-09 15:52:57:175|+++++++++++++++++++++++++++ Generating seal onbf86213ea9ad2fa0d14e90404e90ccc9de2c94ae38b0d6e9f4a097fa2be85a8c#32tx:0,maxtx:0,tq.num=0time:1533801177175
+$ tail -f /mydata/node0/log/log_2018081220.log | grep +++    
+INFO|2018-08-12 20:33:13:431|+++++++++++++++++++++++++++ Generating seal on31e1a94c1feb79a4145272a9c5175636d7c24cf4ed90b0b2f5471e4323e5e89e#34tx:0,maxtx:0,tq.num=0time:1534077193431
+INFO|2018-08-12 20:33:15:457|+++++++++++++++++++++++++++ Generating seal ondbfa0c0cac0e39f0d22c0c6fa3c21e77e15a3c31d8c81dac580dfbf95b2f96cb#34tx:0,maxtx:0,tq.num=0time:1534077195457
 ```
 
 
 同样地，使用如下命令检查普通节点入网情况，若输出`+++`等打包信息，表明普通节点入网成功：
 
 ```bash
-$ bash check_seal.sh /mydata/node0
-INFO|2018-08-09 15:53:22:461|+++++++++++++++++++++++++++ Generating seal onafd52f8bdd894b915883dd94986da0700c597d67b63484810787961e8a797007#32tx:0,maxtx:1000,tq.num=0time:1533801202461
-INFO|2018-08-09 15:53:24:480|+++++++++++++++++++++++++++ Generating seal on5025fc6f1ca2ecf62418d9a19aec782829c817338942a38ca9284ff3c6dea768#32tx:0,maxtx:1000,tq.num=0time:1533801204480
+$ tail -f /mydata/node1/log/log_2018081220.log | grep +++
+INFO|2018-08-12 20:33:36:696|+++++++++++++++++++++++++++ Generating seal on17d28b77047be017be9ec7ebd048b3b9b711cf75dcbdc1eabfe9cd57d8d6e7f7#34tx:0,maxtx:0,tq.num=0time:1534077216696
+INFO|2018-08-12 20:33:38:718|+++++++++++++++++++++++++++ Generating seal onf082c29bcadab361a1bd88853964f8daac643265e4b1a786d669d58a99ce3833#34tx:0,maxtx:0,tq.num=0time:1534077218718
 ```
 
 

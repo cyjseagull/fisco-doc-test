@@ -8,10 +8,10 @@ FISCO BCOS提供generate_chain_cert.sh脚本生成链证书：
 
 ```bash
 # 进入脚本所在目录(设FISCO-BCOS位于/mydata目录)
-cd /mydata/FISCO-BCOS/scripts
+cd /mydata/FISCO-BCOS/tools/scripts
 
 # 在/mydata目录下生成国密版FISCO BCOS链证书
-$ bash ./generate_chain_cert.sh -o /mydata -g -d
+$./generate_chain_cert.sh -o /mydata -g
 # 此时/mydata目录下生成链证书私钥gmca.key、证书gmca.crt和参数gmsm2.param
 $ ls /mydata/
 gmca.crt  gmca.key  gmsm2.param
@@ -25,11 +25,11 @@ Usage:
  -d The Path of Guomi Directory  #GM证书生成脚本所在路径，默认为FISCO-BCOS/cert/GM
  -h This help
 Example:
- bash ./generate_chain_cert.sh -o /mydata -m  # 非国密版链证书生成用法，手动输入证书信息
- bash ./generate_chain_cert.sh -o /mydata     # 非国密版链证书生成用法，使用默认证书信息
+ ./generate_chain_cert.sh -o /mydata -m  # 非国密版链证书生成用法，手动输入证书信息
+ ./generate_chain_cert.sh -o /mydata     # 非国密版链证书生成用法，使用默认证书信息
 guomi Example:
- bash ./generate_chain_cert.sh -o /mydata -m -g # 国密版链证书生成用法，手动输入证书信息
- bash ./generate_chain_cert.sh -o /mydata -g    # 国密版链证书生成用法，使用默认证书信息
+ ./generate_chain_cert.sh -o /mydata -m -g # 国密版链证书生成用法，手动输入证书信息
+ ./generate_chain_cert.sh -o /mydata -g    # 国密版链证书生成用法，使用默认证书信息
 
 ```
 
@@ -39,13 +39,13 @@ generate_agency_cert.sh 脚本用于生成机构证书：
 
 ```bash
 # 进入脚本所在目录(设FISCO-BCOS位于/mydata目录)
-$ cd /mydata/FISCO-BCOS/scripts
+$ cd /mydata/FISCO-BCOS/tools/scripts
 
-# 使用/mydata目录下的链证书颁发机构证书，置于/mydata目录下,机构名为fisco-dev
-$ ./generate_agency_cert.sh -c /mydata -o /mydata -n fisco-dev -g 
+# 使用/mydata目录下的链证书颁发机构证书，置于/mydata目录下,机构名为test_agency
+$ ./generate_agency_cert.sh -c /mydata -o /mydata -n test_agency -g 
 
-# 此时/mydata/fisco-dev目录下生成机构证书gmagency.crt和证书私钥gmagency.key
-$ ls /mydata/fisco-dev/
+# 此时/mydata/test_agency目录下生成机构证书gmagency.crt和证书私钥gmagency.key
+$ ls /mydata/test_agency/
 gmagency.crt  gmagency.key  gmca.crt  gmsm2.param
 
 # 查看generate_agency_cert.sh脚本用法
@@ -59,11 +59,11 @@ Usage:
  -d The Path of Guomi Directory
  -h This help
 Example:
- bash ./generate_agency_cert.sh -c /mydata -o /mydata -n fisco-dev # 非国密版机构证书生成示例
- bash ./generate_agency_cert.sh -c /mydata -o /mydata -n fisco-dev -m
+ bash ./generate_agency_cert.sh -c /mydata -o /mydata -n test_agency # 非国密版机构证书生成示例
+ bash ./generate_agency_cert.sh -c /mydata -o /mydata -n test_agency -m
 guomi Example:          #国密版机构证书生成示例
- bash ./generate_agency_cert.sh -c /mydata -o /mydata -n fisco-dev -g
- bash ./generate_agency_cert.sh -c /mydata -o /mydata -n fisco-dev -m -g
+ bash ./generate_agency_cert.sh -c /mydata -o /mydata -n test_agency -g
+ bash ./generate_agency_cert.sh -c /mydata -o /mydata -n test_agency -m -g
 
 ```
 
@@ -75,8 +75,8 @@ generate_node_cert.sh 脚本用于生成节点证书：
 # 进入脚本所在目录(设FISCO-BCOS位于/mydata目录)
 $ cd /mydata/FISCO-BCOS/scripts
 
-# 使用/mydata/fisco-dev目录下机构证书为节点node0颁发证书，生成的证书置于/mydata/node0/data目录下
-./generate_node_cert.sh -a fisco-dev -d /mydata/fisco-dev -n node0 -o /mydata/node0/data -m -s sdk1 -g
+# 使用/mydata/test_agency目录下机构证书为节点node0颁发证书，生成的证书置于/mydata/node0/data目录下
+./generate_node_cert.sh -a test_agency -d /mydata/test_agency -n node0 -o /mydata/node0/data -m -s sdk1 -g
 
 # 此时在/mydata/node0/data目录下生成节点证书&&客户端连接证书
  $ ls -1
