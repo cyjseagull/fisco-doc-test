@@ -5,7 +5,7 @@
 .. important::
    - 配置web3sdk前，请确保参考 `web3sdk编译文档 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/quick-start/compile.html#>`_ 成功编译web3sdk
    - 配置web3sdk前，请先生成客户端证书，并将证书拷贝到web3sdk/dist/conf目录：
-    1. 参考 `FISCO-BCOS快速入门 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/getstart/index.html>`_ 搭建FISCO-BCOS链：客户端证书生成参考 `FISCO-BCOS快速入门 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/getstart/cert_config.html#id3>`_ **基础配置中的SDK证书配置** ;
+    1. 手动搭链：客户端证书生成参考 `FISCO-BCOS快速入门 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/getstart/cert_config.html#id3>`_ **基础配置中的SDK证书配置** ;
      
     2. 由 `FISCO-BCOS物料包搭建的链 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/tools/fisco-package/index.html#>`_ 搭建的FISCO-BCOS链：客户端证书生成参考 `SDK证书生成 <TODO>`_ 
 
@@ -51,10 +51,8 @@
             <!--系统合约地址: 【系统合约代理地址,对应节点config.json里的systemproxyaddress】-->
             <property name="systemProxyAddress" value="0x0" />
             <!--GOD账户的私钥: -->
-            <!--非国密版FISCO-BCOS获取GOD账户和账户私钥: 【参考https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/c
-onfig_web3sdk.html】-->
-            <!--国密版FISCO-BCOS获取GOD账户和账户私钥：【参考https://fisco-bcos-test.readthedocs.io/zh/latest/docs/guomi/confi
-g_guomi.html#sdk】-->
+            <!--非国密版FISCO-BCOS获取GOD账户和账户私钥: 【参考https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/config_web3sdk.html】-->
+            <!--国密版FISCO-BCOS获取GOD账户和账户私钥：【参考https://fisco-bcos-test.readthedocs.io/zh/latest/docs/guomi/config_guomi.html#sdk】-->
             <property name="privKey" value="bcec428d5205abe0f0cc8a734083908d9eb8563e31f943d760786edf42ad67dd" />
             <!--GOD账户-->
             <property name="account" value="0x776bd5cf9a88e9437dc783d6414bccc603015cf0" />
@@ -71,7 +69,7 @@ g_guomi.html#sdk】-->
     
    - **god账号信息查询：**
     
-    1. 使用 `FISCO-BCOS快速入门文档 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/getstart/index.html>`_ 搭链：
+    1. 手动搭链：
     
      ① **非国密版FISCO-BCOS** ：设源码位于/mydata/FISCO-BCOS目录，则god账号信息位于/mydata/FISCO-BCOS/tools/scripts/godInfo.txt文件中; 若搭链过程中使用系统默认god账号，则god账号位于/mydata/FISCO-BCOS/tools/scripts/god_info/godInfo.txt文件;
      
