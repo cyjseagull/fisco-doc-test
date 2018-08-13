@@ -1,5 +1,3 @@
-
-[toc]
 <center> <h1>FISCO BCOS物料包工具使用指南</h1> </center>
 
 # 一. 介绍
@@ -14,13 +12,13 @@
 * **非创世节点**：除去创世节点的其它节点。
 
 ## 1.3. 特性功能
-- [&radic;] 从零开始搭建区块链：可以搭建出一条区块链的所有节点的安装包。
+- [&] 从零开始搭建区块链：可以搭建出一条区块链的所有节点的安装包。
   * 步骤见( [5. 从零开始搭建区块链步骤](#buildblockchain) )
-- [&radic;] 区块链扩容。对以前的已经在跑的区块链, 可以提供其创世节点的相关文件, 创建出非创世节点, 并连接到这条区块链。
+- [&] 区块链扩容。对以前的已经在跑的区块链, 可以提供其创世节点的相关文件, 创建出非创世节点, 并连接到这条区块链。
   * 步骤见( [附录一：指定给定的创世节点,扩容节点](#specific_genesis_node_expand) )
 
 ## 1.4. 依赖  
-- [&radic;]    机器配置  
+- [&]    机器配置  
 
    参考FISCO BCOS[机器配置](https://github.com/FISCO-BCOS/FISCO-BCOS/tree/master/doc/manual#第一章-部署fisco-bcos环境)  
    ```
@@ -30,7 +28,7 @@
    Ubuntu 16.04 64位
    ```
   
-- [&radic;]    软件依赖  
+- [&]    软件依赖  
 
 ```shell
 docker
@@ -48,7 +46,7 @@ sudo apt -y install docker
 - CentOS/Ubuntu默认安装或者使用yum/apt安装的是openJDK, 并不符合使用要求, Oracle JDK 1.8 的安装链接.  
 [[ Oracle JDK 1.8 安装]](https://github.com/ywy2090/fisco-package-build-tool/blob/docker/doc/Oracle%20JAVA%201.8%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B.md)
 
-- [&radic;]    其他依赖  
+- [&]    其他依赖  
   sudo权限, 当前执行的用户需要具有sudo权限
   
 # 二. 部署区块链
