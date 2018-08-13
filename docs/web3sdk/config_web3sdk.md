@@ -4,7 +4,12 @@
 
 .. important::
    - 配置web3sdk前，请确保参考 `web3sdk编译文档 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/quick-start/compile.html#>`_ 成功编译web3sdk
-   - 配置web3sdk前，请参考 `FISCO-BCOS Quick Start的客户端证书生成 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/getstart/cert_config.html#id3>`_ 生成客户端证书，并将证书拷贝到web3sdk/dist/conf目录
+   - 配置web3sdk前，请先生成客户端证书，并将证书拷贝到web3sdk/dist/conf目录：
+    1. 手动搭链：客户端证书生成参考 `FISCO-BCOS快速入门 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/getstart/cert_config.html#id3>`_ **基础配置中的SDK证书配置** ;
+     
+    2. 由 `FISCO-BCOS物料包搭建的链 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/tools/fisco-package/index.html#>`_ 搭建的FISCO-BCOS链：客户端证书生成参考 `SDK证书生成 <TODO>`_ 
+
+    3. 国密版FISCO-BCOS链SDK证书生成参考 `SDK证书生成 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/guomi/gen_cert.html#sdk>`_ 
 ```
 
 ## 配置java客户端相关信息 
@@ -22,8 +27,8 @@
    找到 `web3sdk/dist/conf/applicationContext.xml文件的【区块链节点信息配置】 <https://github.com/FISCO-BCOS/web3sdk/blob/master/src/test/resources/applicationContext.xml>`_ 一节，配置keystore密码
      .. code-block:: xml
 
-         <property name="keystorePassWord" value="【生成client.keystore时对应的密码】" />
-         <property name="clientCertPassWord" value="【生成client.keystore时对应的密码】" />
+         <property name="keystorePassWord" value="【生成client.keystore时对应的keystore密码】" />
+         <property name="clientCertPassWord" value="【生成client.keystore时对应的证书密码】" />
     
    **配置节点信息，请务必注意：节点id、ip、端口，和连接的FISCO-BCOS节点必须一致** 
      .. code-block:: xml
@@ -33,26 +38,47 @@
                 <value>【节点id】@【IP】:【端口】</value>
             </list>
         </property>
-    
-    .. important::
 
-       -  **节点id查询方法** ：若节点服务器上，节点数据目录所在路径为/mydata/nodedata-1/，则节点id可以在/mydata/nodedata-1/data/node.nodeid文件里查到，其他信息在/mydata/nodedata-1/config.json里可查到；
-       - **这里的端口是对应config.json里的channelPort，而不是rpcport或p2pport** 
-       - **list段里可以配置多个value，对应多个节点的信息，实现客户端多活通信** 
    
    其他配置
-    另外，调用SystemProxy|AuthorityFilter等系统合约工具时需要配置系统合约地址SystemProxyAddress和GOD账户私钥信息，GOD账号默认为0x776bd5cf9a88e9437dc783d6414bccc603015cf0,GOD账号私钥默认为bcec428d5205abe0f0cc8a734083908d9eb8563e31f943d760786edf42ad67dd
+    调用SystemProxy|AuthorityFilter等系统合约工具时需配置系统合约地址SystemProxyAddress和GOD账户信息；
+    GOD账号默认为 ``0x776bd5cf9a88e9437dc783d6414bccc603015cf0`` ,GOD账号私钥默认为 ``bcec428d5205abe0f0cc8a734083908d9eb8563e31f943d760786edf42ad67dd`` 
 
      .. code-block:: xml
-
+        
+        <!-- 系统合约地址配置，使用系统合约工具时需配置-->
         <bean id="toolConf" class="org.bcos.contract.tools.ToolConf">
-            <property name="systemProxyAddress" value="【系统合约代理地址,对应节点config.json里的systemproxyaddress】" />
-            <!--GOD账户的私钥-->
-            <property name="privKey" value="【对应搭链创建god帐号环境$fiscobcos/tool/godInfo.txt里的privKey】" />
+            <!--系统合约地址: 【系统合约代理地址,对应节点config.json里的systemproxyaddress】-->
+            <property name="systemProxyAddress" value="0x0" />
+            <!--GOD账户的私钥: -->
+            <!--非国密版FISCO-BCOS获取GOD账户和账户私钥: 【参考https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/config_web3sdk.html】-->
+            <!--国密版FISCO-BCOS获取GOD账户和账户私钥：【参考https://fisco-bcos-test.readthedocs.io/zh/latest/docs/guomi/config_guomi.html#sdk】-->
+            <property name="privKey" value="bcec428d5205abe0f0cc8a734083908d9eb8563e31f943d760786edf42ad67dd" />
             <!--GOD账户-->
-            <property name="account" value="【对应搭链创建god帐号环境$fiscobcos/tool/godInfo.txt里的address】" />
+            <property name="account" value="0x776bd5cf9a88e9437dc783d6414bccc603015cf0" />
             <property name="outPutpath" value="./output/" />
         </bean>
+
+
+.. important::
+   -  **节点id查询方法** ：
+    
+    1. 查询节点id：若节点服务器上，节点数据目录所在路径为/mydata/node0/，则节点id可以在/mydata/node0/data/node.nodeid文件里查到;
+    
+    2. channelPort、系统合约地址systemcontractaddress等信息查询: 若节点服务器上，节点数据目录所在路径为/mydata/node0/，在/mydata/node0/config.json里可查到;
+    
+   - **god账号信息查询：**
+    
+    1. 手动搭链：
+    
+     ① **非国密版FISCO-BCOS** ：设源码位于/mydata/FISCO-BCOS目录，则god账号信息位于/mydata/FISCO-BCOS/tools/scripts/godInfo.txt文件中; 若搭链过程中使用系统默认god账号，则god账号位于/mydata/FISCO-BCOS/tools/scripts/god_info/godInfo.txt文件;
+     
+     ② **国密版FISCO-BCOS** ：设源码位于/mydata/FISCO-BCOS目录，则god账号位于/mydata/FISCO-BCOS/tools/scripts/guomi_godInfo.txt文件中; 若搭链过程中使用系统默认god账号，则god账号位于/mydata/FISCO-BCOS/tools/scripts/god_info/guomiDefaultGod.txt
+    
+    2. 使用 `FISCO-BCOS物料包 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/tools/fisco-package/index.html>`_ 搭链: 参考 `god账号说明 <https://github.com/FISCO-BCOS/fisco-package-build-tool#71-god%E8%B4%A6%E5%8F%B7>`_ 获取god账号信息;
+   
+   - **这里的端口是对应config.json里的channelPort，而不是rpcport或p2pport** 
+   - **list段里可以配置多个value，对应多个节点的信息，实现客户端多活通信** 
 ```
 
 ## 测试是否配置成功

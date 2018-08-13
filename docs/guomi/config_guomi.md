@@ -28,8 +28,9 @@ $ cp /mydata/node0/data/sdk1/* /mydata/web3sdk/dist/conf
 
    web3sdk中开启国密算法，需要将 `encryptType` 选项设置为1，其他选项参考 `非国密版web3sdk配置 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/config_web3sdk.html#>`_：
 
-   .. image:: imgs/guomi_config.png
+   .. image:: imgs/guomiconfig.PNG
       :align: center
+
 
 ```
 
