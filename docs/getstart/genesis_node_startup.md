@@ -61,7 +61,7 @@ cd /mydata/FISCO-BCOS/tools/scripts/
 sh set_proxy_address.sh -o 127.0.0.1:8545 
 ```
 
-将创世节点注册如联盟中，参与共识
+将创世节点注册入联盟中，参与共识
 
 ``` shell
 #sh register_node.sh -d 要注册节点的文件目录
