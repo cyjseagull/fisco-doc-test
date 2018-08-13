@@ -60,7 +60,7 @@
         $ cd /mydata/FISCO-BCOS
 
         # 调用build.sh脚本编译国密版fisco-bcos
-        $ sudo bash build.sh guomi
+        $ sudo bash build.sh -g
 
         # 确认fisco-bcos是国密版本
         $ fisco-bcos --version

@@ -4,7 +4,7 @@
 
 .. important::
    - 配置web3sdk前，请确保参考 `web3sdk编译文档 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/quick-start/compile.html#>`_ 成功编译web3sdk
-   - 配置web3sdk前，请参考 `FISCO-BCOS Quick Start的客户端证书生成 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/getstart/chain_setting.html#id3>`_ 生成客户端证书，并将证书拷贝到web3sdk/dist/conf目录
+   - 配置web3sdk前，请参考 `FISCO-BCOS Quick Start的客户端证书生成 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/getstart/cert_config.html#id3>`_ 生成客户端证书，并将证书拷贝到web3sdk/dist/conf目录
 ```
 
 ## 配置java客户端相关信息 
@@ -65,10 +65,10 @@
    具体测试过程如下：
     .. code-block:: bash
 
-       #-----------进入dist目录
+       # 进入web3sdk目录(设源码位于/mydata/web3sdk/dist中)
        $ cd /mydata/web3sdk/dist
        
-       #-----------调用测试合约TestOk
+       # 调用测试合约TestOk
        $ java -cp 'conf/:apps/*:lib/*' org.bcos.channel.test.TestOk
        ===================================================================
        =====INIT ECDSA KEYPAIR From private key===

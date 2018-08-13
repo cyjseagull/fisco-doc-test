@@ -54,6 +54,7 @@ RPC address:            127.0.0.1:8545
 P2P address:            127.0.0.1:30303
 Channel address:        127.0.0.1:8891
 SystemProxy address:    0xee80d7c98cb9a840b9c4df742f61336770951875
+God address:            0xf02a10f685a90c3bfc2eccd906b75fe3feeec9ad
 State:                  Running (pid: 11524)
 -----------------------------------------------------------------
 
@@ -65,16 +66,14 @@ State:                  Running (pid: 11524)
 # bootstrapnodes.json: 127.0.0.1:30303,127.0.0.1:3030
 # 系统合约地址: 0xee80d7c98cb9a840b9c4df742f61336770951875
 # 创世节点目录: /mydata/node0
-$ ./generate_node.sh -o /mydata -n node1 -l 127.0.0.1 -r 8546 -p 30304 -c 8892 -e 127.0.0.1:30303,127.0.0.1:30304 -x 0xee80d7c98cb9a840b9c4df742f61336770951875 -i /mydata/node0 -g
+$ ./generate_node.sh -o /mydata -n node1 -l 127.0.0.1 -r 8546 -p 30304 -c 8892 -e 127.0.0.1:30303,127.0.0.1:30304 -x 0xee80d7c98cb9a840b9c4df742f61336770951875 -i 3d4fe4c876cac411d4c7180b5794198fb3b4f3e0814156410ae4184e0a51097a01bf63e431293f30af0c01a57f24477ad1704d8f676bc7e345526ba1735db6a7 -s 0xf02a10f685a90c3bfc2eccd906b75fe3feeec9ad -g
 # 创建节点环境
 ---------- Generate node basic files ----------
 RUN: sh generate_node_basic.sh -o /mydata -n node1 -l 127.0.0.1 -r 8546 -p 30304 -c 8892 -e 127.0.0.1:30303,127.0.0.1:30304 -x 0xee80d7c98cb9a840b9c4df742f61336770951875 -g
 #...此处省略若干行....
 SUCCESS execution of command: sh generate_node_basic.sh -o /mydata -n node1 -l 127.0.0.1 -r 8546 -p 30304 -c 8892 -e 127.0.0.1:30303,127.0.0.1:30304 -x 0xee80d7c98cb9a840b9c4df742f61336770951875 -g
-# 创建普通节点genesis.json(从创世节点拷贝)
+# 创建普通节点genesis.json
 ---------- Generate node genesis file ----------
-RUN: cp /mydata/node0/genesis.json /mydata/node1
-SUCCESS execution of command: cp /mydata/node0/genesis.json /mydata/node1
 # ... 此处省略若干行...
 # 输出普通节点信息
 -----------------------------------------------------------------
@@ -87,8 +86,34 @@ RPC address:            127.0.0.1:8546
 P2P address:            127.0.0.1:30304
 Channel address:        127.0.0.1:8892
 SystemProxy address:    0xee80d7c98cb9a840b9c4df742f61336770951875
+God address:            0xf02a10f685a90c3bfc2eccd906b75fe3feeec9ad
 State:                  Stop
 -----------------------------------------------------------------
+
+## generate_node.sh用法
+$ ./generate_node.sh -h
+
+Usage:
+ -o <output dir> Where node files generate  #普通节点所在目录
+ -n <node name> Name of node  #普通节点名称
+ -l <listen ip> Node\'s listen IP #普通节点监听IP(推荐填外网IP) 
+ -r <RPC port> Node\'s RPC port #普通节点RPC端口
+ -p <P2P port> Node\'s P2P port #普通节点P2P端口
+ -c <channel port> Node\'s channel port #普通节点channel port
+ -e <bootstrapnodes> Node\'s bootstrap nodes    #普通节点bootstrapnode.json配置，主要包括要连接节点的IP和端口
+ -a <agency name> The agency name that the node belongs to #普通节点所属机构(国密版搭建过程忽略该参数)
+ -d <agency dir> The agency cert dir that the node belongs to #普通节点机构证书目录(国密版搭建过程忽略该参数)
+ -i <genesis node id> Genesis node id   #普通节点所属链的创世节点node id
+ -s <god address> God address # 普通节点所属链的god账号
+ -x <system proxy address> System proxy address of the blockchain # 普通节点所属链的系统合约地址
+Optional:
+ -m Input agency information manually #手动输入机构证书信息(国密版搭建过程忽略该参数)
+ -g Create guomi node #生成国密版普通节点
+ -h This help
+Example: #非国密版generate_node.sh使用示例
+ bash ./generate_node.sh -o /mydata -n node1 -l 127.0.0.1 -r 8546 -p 30304 -c 8892 -e 127.0.0.1:30303,127.0.0.1:30304 -d /mydata/test_agency -a test_agency -x 0x919868496524eedc26dbb81915fa1547a20f8998 -i xxxxxx -s xxxxxx
+GuomiExample: #国密版generate_node.sh使用示例
+ bash ./generate_node.sh -o /mydata -n node1 -l 127.0.0.1 -r 8546 -p 30304 -c 8892 -e 127.0.0.1:30303,127.0.0.1:30304 -x 0x919868496524eedc26dbb81915fa1547a20f8998 -i xxxxxx -s xxxxxx -g
 ```
 
 ## 启动节点进程

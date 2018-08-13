@@ -124,6 +124,7 @@ RPC address:            127.0.0.1:8545
 P2P address:            127.0.0.1:30303
 Channel address:        127.0.0.1:8891
 SystemProxy address:    0xee80d7c98cb9a840b9c4df742f61336770951875 #系统代理合约地址
+God address:            0xf02a10f685a90c3bfc2eccd906b75fe3feeec9ad # god账号地地址
 State:                  Running (pid: 11524)  #节点运行状态
 -----------------------------------------------------------------
 

@@ -2,6 +2,7 @@
 
 ```eval_rst
 .. admonition:: 注意事项
+
    节点入网前，请确保首先注册创世节点
 ```
 
@@ -82,7 +83,11 @@ RUN: babel-node tool.js NodeAction all
   Ouputpath: './output/',
   EncryptType: 1,
   privKey: 'bcec428d5205abe0f0cc8a734083908d9eb8563e31f943d760786edf42ad67dd',
-  account: '0x64fa644d2a694681bd6addd6c5e36cccd8dcdde3' }send transaction success: 0x1f923378d2640acad78378ee2f21002213cb9f81dfcb7b0f2e42ea5a960a08e6
+  account: '0x64fa644d2a694681bd6addd6c5e36cccd8dcdde3' }
+send transaction success: 0x1f923378d2640acad78378ee2f21002213cb9f81dfcb7b0f2e42ea5a960a08e6
+SUCCESS execution of command: babel-node tool.js NodeAction register /mydata/node1/data/gmnode.json 
+/data/chenyujie/guomi/FISCO-BCOS/tools/scripts
+RUN: babel-node tool.js NodeAction all
 
 Soc File :NodeAction
 Func :all
@@ -91,10 +96,7 @@ NodeAction address 0x22af893607e84456eb5aea0b277e4dffe260fdcd
 NodeIdsLength= 2
 ----------node 0---------
 id=3d4fe4c876cac411d4c7180b5794198fb3b4f3e0814156410ae4184e0a51097a01bf63e431293f30af0c01a57f24477ad1704d8f676bc7e345526ba1735db6a7
-name=SUCCESS execution of command: babel-node tool.js NodeAction register /mydata/node1/data/gmnode.json 
-/data/chenyujie/guomi/FISCO-BCOS/tools/scripts
-RUN: babel-node tool.js NodeAction all
-
+name=
 agency=
 caHash=D14983471F0AC975
 Idx=0
@@ -120,7 +122,7 @@ Func :all
 FISCO-BCOS提供了`node_all.sh`命令查看记账节点信息：
 
 ```bash
- ./node_all.sh 
+$./node_all.sh 
 RUN: babel-node tool.js NodeAction all
 { HttpProvider: 'http://127.0.0.1:8545',
   Ouputpath: './output/',
@@ -173,9 +175,9 @@ INFO|2018-08-12 20:33:38:718|+++++++++++++++++++++++++++ Generating seal onf082c
 
 ```eval_rst
 
-.. admonition:: congratulations ^V^
+.. admonition:: congratulations :)
 
    至此，您已经成功搭建一条可用的国密版FISCO-BCOS链 
     - 更高级的使用方法请参考 `FISCO-BCOS高级特性 <TODO>`_
-    - 国密版web3sdk配置和使用方法请参考 `国密版web3sdk <TODO>`_
+    - 国密版web3sdk配置和使用方法请参考 `国密版web3sdk <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/guomi/config_guomi.html#>`_
 ```
