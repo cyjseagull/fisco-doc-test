@@ -9,7 +9,7 @@
      
     2. 由 `FISCO-BCOS物料包搭建的链 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/tools/fisco-package/index.html#>`_ 搭建的FISCO-BCOS链：客户端证书生成参考 `SDK证书生成 <TODO>`_ 
 
-    3. 国密版FISCO-BCOS链SDK证书生成参考 `SDK证书生成 <TODO>`_ 
+    3. 国密版FISCO-BCOS链SDK证书生成参考 `SDK证书生成 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/guomi/gen_cert.html#sdk>`_ 
 ```
 
 ## 配置java客户端相关信息 
