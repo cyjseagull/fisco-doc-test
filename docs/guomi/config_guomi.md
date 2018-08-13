@@ -31,6 +31,7 @@ $ cp /mydata/node0/data/sdk1/* /mydata/web3sdk/dist/conf
    .. image:: imgs/guomi_config.png
       :align: center
 
+
 ```
 
 

@@ -73,7 +73,7 @@ generate_node_cert.sh 脚本用于生成节点证书：
 
 ```bash
 # 进入脚本所在目录(设FISCO-BCOS位于/mydata目录)
-$ cd /mydata/FISCO-BCOS/scripts
+$ cd /mydata/FISCO-BCOS/tools/scripts
 
 # 使用/mydata/test_agency目录下机构证书为节点node0颁发证书，生成的证书置于/mydata/node0/data目录下
 ./generate_node_cert.sh -a test_agency -d /mydata/test_agency -n node0 -o /mydata/node0/data -m -s sdk1 -g
@@ -119,6 +119,23 @@ Example: # 非国密版节点证书生成示例
 guomi Example: #国密版FISCO-BCOS节点证书生成示例
  bash ./generate_node_cert.sh -a test_agency -d /mydata/test_agency -n node0 -o /mydata/node0/data -s sdk1 -g
  bash ./generate_node_cert.sh -a test_agency -d /mydata/test_agency -n node0 -o /mydata/node0/data -m -s sdk1 -g
+
+```
+
+# SDK证书
+
+生成节点证书时，会在节点目录下同时生成SDK证书，如上例中node0的sdk证书位于`/mydata/node0/data/sdk1`目录。
+也可使用`gmsdk.sh` 脚本手动生成sdk证书，**但生成后需要**:
+
+```bash
+# 进入脚本所在目录(设FISCO-BCOS位于/mydata目录)
+$ cd /mydata/FISCO-BCOS/tools/cert/GM
+
+# 执行国密版SDK生成脚本gmsdk
+$ ./gmsdk.sh sdk1 #生成的sdk证书位于sdk1目录下
+
+# 用新生成的sdk证书sdk要连接的节点相关证书(设sdk要连接node0)
+$ cp sdk/* /mydata/node0/data/
 
 ```
 
