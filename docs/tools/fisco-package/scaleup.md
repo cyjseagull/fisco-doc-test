@@ -5,8 +5,8 @@
   * genesis.json
   * bootstrapnodes.json : 创世节点的连接ip信息。
   * syaddress.txt : 系统合约的地址。  
-- [x]   这几个文件位于创世节点所在机器的安装目录下的dependencies子目录。
-- [x]   区块链安装包创建工具所在的服务器如果之前没有编译、安装FISCO BCOS时, 也可以把创世节点上的fisco-bcos文件拿下来，放入/usr/local/bin目录下, 这样就可以不用重新编译FISCO BCOS.
+- 这几个文件位于创世节点所在机器的安装目录下的dependencies子目录。
+- 区块链安装包创建工具所在的服务器如果之前没有编译、安装FISCO BCOS时, 也可以把创世节点上的fisco-bcos文件拿下来，放入/usr/local/bin目录下, 这样就可以不用重新编译FISCO BCOS.
 
 ## 配置
 
@@ -92,6 +92,7 @@ dependencies/systemcontract
 	
 - 执行启动脚本start_node0.sh后, ps -aux | egrep fisco发现进程不存在, 可以查看./build/nodedir0/log/log文件的内容, 里面会有具体的报错内容。  
 常见的一些报错如下：  
+
 a. 
 ```
 terminate called after throwing an instance of 'boost::exception_detail::clone_impl<dev::eth::DatabaseAlreadyOpen>'
