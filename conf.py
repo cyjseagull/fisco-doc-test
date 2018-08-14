@@ -307,9 +307,9 @@ texinfo_documents = [
 #	'.md': CommonMarkParser,
 #}
 
-#extensions = [
-#	'sphinx_markdown_tables', 
-#]
+extensions = [
+	'sphinx_markdown_tables', 
+]
 #extensions = [
 #    'sphinx.ext.todo',
 #    'sphinx.ext.mathjax',
