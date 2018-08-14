@@ -299,7 +299,7 @@ send transaction success: 0x769e4ea7742b451e33cbb0d2a7d3126af8f277a52137624b3d4a
   * genesis.json 
   * bootstrapnodes.json  
   * syaddress.txt  
-- [&radic;]  也可以将创世节点的fisco-bcos文件放入物料包工具的/usr/local/bin目录.  
+- 也可以将创世节点的fisco-bcos文件放入物料包工具的/usr/local/bin目录.  
 
 - 从创世节点所在服务器上取出dependencies/cert目录, 该目录包含创建时分配的根证书、机构证书, 放到物料包工具所在的机器。
 
