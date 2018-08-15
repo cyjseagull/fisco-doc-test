@@ -9,4 +9,5 @@ FISCO-BCOS 使用指南(进行中)
    cert_permission.md
    contract_operation.md
    system_contract.md
-   
+   tools.md
+   console.md
