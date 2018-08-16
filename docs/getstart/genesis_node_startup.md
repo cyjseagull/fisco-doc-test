@@ -18,6 +18,7 @@ sh generate_genesis_node.sh  -o /mydata -n node0 -l 127.0.0.1 -r 8545 -p 30303 -
 Genesis node generate success!
 -----------------------------------------------------------------
 Name:			node0
+Node dir:		/mydata/node0
 Agency:			test_agency
 CA hash:		A809F269BEE93DA4
 Node ID:		d23058c33577f850832e47994df495c674ba66273df2fcb1e6ee7d7e1dbd7be78be2f7b302c9d15842110b3db6239da2aa98ddf68e512b452df748d3d3e4c1cd
@@ -25,7 +26,7 @@ RPC address:		127.0.0.1:8545
 P2P address:		127.0.0.1:30303
 Channel address:	127.0.0.1:8891
 SystemProxy address:	0x919868496524eedc26dbb81915fa1547a20f8998
-Node dir:		/mydata/node0
+God address:		0xf78451eb46e20bc5336e279c52bda3a3e92c09b6
 State:			Stop
 -----------------------------------------------------------------
 ```
