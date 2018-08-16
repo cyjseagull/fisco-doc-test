@@ -70,23 +70,25 @@ sdk.pubkey sdk公钥
 
 
 ## 证书生成流程：
-FISCO-BCOS的证书生成流程如下：
-### 生成链的相关数据：
+FISCO-BCOS的证书生成流程如下，详见 https://fisco-bcos-test.readthedocs.io/zh/latest/docs/usage/tools.html 中证书操作部分
+
+### 生成链证书：
 ```shell
-* 运行生成链证书脚本chain.sh
+* 运行生成链证书脚本generate_chain_cert.sh
 * 请求链私钥ca.key，用ca.key生成链证书ca.crt
 ```
 
-### 生成机构的相关数据：
+### 生成机构证书：
 ```shell
-* 生成机构证书脚本agency.sh 需要输入机构名
+* 运行机构证书生成脚本generate_agency_cert.sh
 * 首先请求机构私钥agency.key
 * 用机构私钥agency.key 得到公钥证书原始文件agency.csr
 * 用链证书ca.crt，链私钥ca.key，公钥证书原始文件agency.csr生成机构证书agency.crt。机构证书生成不需要机构私钥
 ```
 
-### 生成节点证书的相关数据：
+### 生成节点证书：
 ```shell
+* 运行节点证书生成脚本generate_node_cert.sh
 * 首先请求secp256k1模块得到node参数，用这些参数得到node.key私钥
 * 然后用node.key得到公钥node.pubkey
 * 用私钥node.key得到node公钥证书原始文件node.csr
@@ -96,8 +98,9 @@ FISCO-BCOS的证书生成流程如下：
 * 提取node.crt里的数据得到node.serial
 ```
 
-### 生成sdk证书的相关数据：
+### 生成sdk证书：
 ```shell
+* 运行sdk证书生成脚本generate_sdk_cert.sh
 * 首先请求secp256k1模块得到sdk参数，用这些参数得到sdk.key私钥
 * 然后用sdk.key得到公钥sdk.pubkey
 * 用私钥sdk.key得到sdk公钥证书原始文件sdk.csr
@@ -105,3 +108,4 @@ FISCO-BCOS的证书生成流程如下：
 * 将sdk.key DER编码写入sdk.private
 * 最后把ca.crt和agency.crt写入ca-agency.crt
 ```
+数字证书就是区块链网络中标志通讯各方身份信息的一串数字，提供了一种在网络上验证通信实体身份的方式，数字证书不是数字身份证，而是身份认证机构盖在数字身份证上的一个章或印（或者说加在数字身份证上的一个签名）。FISCO-BCOS网络采用证书机制，对节点的准入进行管理，从而保证整个网络有效，可靠，安全地进行通信。
