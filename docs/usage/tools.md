@@ -33,7 +33,7 @@
 
 ``` shell
 cd /mydata/FISCO-BCOS/tools/scripts/
-generate_chain_cert.sh -h
+bash generate_chain_cert.sh -h
 ```
 
 生成证书
@@ -82,7 +82,7 @@ bash generate_chain_cert.sh -o /mydata
 
 ```shell
 cd /mydata/FISCO-BCOS/tools/scripts/
-generate_agency_cert.sh -h
+bash generate_agency_cert.sh -h
 ```
 
 生成证书
@@ -136,7 +136,7 @@ test_agency/
 
 ```shell
 cd /mydata/FISCO-BCOS/tools/scripts/
-generate_node_cert.sh -h
+bash generate_node_cert.sh -h
 ```
 
 生成证书
@@ -198,7 +198,7 @@ node0/
 
 ```shell
 cd /mydata/FISCO-BCOS/tools/scripts/
-generate_sdk_cert.sh -h
+bash generate_sdk_cert.sh -h
 ```
 
 生成证书
@@ -267,7 +267,7 @@ test_agency/
 
 ```shell
 cd /mydata/FISCO-BCOS/tools/scripts/
-generate_genesis_node.sh -h
+bash generate_genesis_node.sh -h
 ```
 
 生成创世节点
@@ -411,7 +411,7 @@ node0/
 
 ```shell
 cd /mydata/FISCO-BCOS/tools/scripts/
-generate_node.sh -h
+bash generate_node.sh -h
 ```
 
 生成节点
@@ -481,7 +481,7 @@ node1
 
 ```shell
 cd /mydata/FISCO-BCOS/tools/scripts/
-generate_node_basic.sh -h
+bash generate_node_basic.sh -h
 ```
 
 生成节点基本文件
@@ -564,7 +564,7 @@ address : 0xb862b65912e0857a49458346fcf578d199dba024
 
 ```shell
 cd /mydata/FISCO-BCOS/tools/scripts/
-generate_genesis.sh -h
+bash generate_genesis.sh -h
 ```
 
 生成创世块文件
@@ -618,7 +618,7 @@ bash generate_genesis.sh -i 4af70363e2266e62aaca5870d660cc4ced35deae83b67f3dffeb
 
 ``` shell
 cd /mydata/FISCO-BCOS/tools/scripts
-sh set_proxy_address.sh -h
+bash set_proxy_address.sh -h
 ```
 
 设置RPC的URL（节点的RPC的URL用node_info.sh获取）
@@ -661,7 +661,7 @@ proxy="http://127.0.0.1:8545"
 
 ``` shell
 cd /mydata/FISCO-BCOS/tools/scripts
-sh set_proxy_address.sh -h
+bash set_proxy_address.sh -h
 ```
 
 部署系统合约
@@ -712,7 +712,7 @@ sed -i '/systemproxyaddress/c  \\t\"systemproxyaddress\":\"0xbac830dee59a0f2a33b
 
 ``` shell
 cd /mydata/FISCO-BCOS/tools/scripts
-sh register_node.sh -h
+bash register_node.sh -h
 ```
 
 将指定节点目录，将节点注册入网
@@ -781,13 +781,13 @@ app  57385      1 37 15:24 ?        00:00:01 fisco-bcos --genesis /mydata/node1/
 
 ``` shell
 cd /mydata/FISCO-BCOS/tools/scripts
-sh node_info.sh -h
+bash node_info.sh -h
 ```
 
 指定节点目录，查看节点信息
 
 ``` shell
-sh node_info.sh -d /mydata/node1/
+bash node_info.sh -d /mydata/node1/
 ```
 
 得到节点关键信息
@@ -829,13 +829,13 @@ State:			Running (pid: 69599)
 
 ``` shell
 cd /mydata/FISCO-BCOS/tools/scripts
-sh node_all.sh -h
+bash node_all.sh -h
 ```
 
 直接调用脚本查看
 
 ``` shell
-sh node_all.sh
+bash node_all.sh
 ```
 
 得到被注册的节点
