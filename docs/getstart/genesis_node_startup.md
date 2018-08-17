@@ -9,7 +9,7 @@ cd /mydata/FISCO-BCOS/tools/scripts/
 
 #sh generate_genesis_node -o 节点文件夹生成位置 -n 节点名 -l 节点监听的IP -r 节点的RPC端口 -p 节点的P2P端口 -c 节点的Channel Port端口 -d 机构证书存放目录 -a 机构证书名
 #创世节点
-sh generate_genesis_node.sh  -o /mydata -n node0 -l 127.0.0.1 -r 8545 -p 30303 -c 8891 -d /mydata/test_agency/ -a test_agency
+bash generate_genesis_node.sh  -o /mydata -n node0 -l 127.0.0.1 -r 8545 -p 30303 -c 8891 -d /mydata/test_agency/ -a test_agency
 ```
 
 若成功，得到创世节点信息
@@ -43,7 +43,7 @@ RPC address:  127.0.0.1:8545
 
 ``` shell
 cd /mydata/node0
-sh start.sh
+bash start.sh
 #关闭用 sh stop.sh
 ```
 
@@ -58,15 +58,15 @@ cd /mydata/FISCO-BCOS/tools/scripts/
 设置需要操作的链的RPC端口（此时链上只有一个创世节点），输入y回车确认。
 
 ``` shell
-#sh set_proxy_address.sh -o 节点的RPC address
-sh set_proxy_address.sh -o 127.0.0.1:8545 
+#bash set_proxy_address.sh -o 节点的RPC address
+bash set_proxy_address.sh -o 127.0.0.1:8545 
 ```
 
 将创世节点注册入联盟中，参与共识
 
 ``` shell
-#sh register_node.sh -d 要注册节点的文件目录
-sh register_node.sh -d /mydata/node0/
+#bash register_node.sh -d 要注册节点的文件目录
+bash register_node.sh -d /mydata/node0/
 ```
 
 

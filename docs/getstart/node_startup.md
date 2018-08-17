@@ -7,8 +7,8 @@
 ``` shell
 cd /mydata/FISCO-BCOS/tools/scripts/
 
-#sh node_info.sh -d 要查看信息的节点目录
-sh node_info.sh -d /mydata/node0/
+#bash node_info.sh -d 要查看信息的节点目录
+bash node_info.sh -d /mydata/node0/
 ```
 
 记录关键信息
@@ -27,8 +27,8 @@ God address:		0xf78451eb46e20bc5336e279c52bda3a3e92c09b6
 **注意：端口不要和其它节点重复**
 
 ``` shell
-#sh generate_node -o 节点文件生成位置 -n 节点名 -l 节点监听的IP -r 节点的RPC端口 -p 节点的P2P端口 -c 节点的Channel Port端口 -e 链上现有节点的P2P端口列表，用“,”隔开（如指向创世节点和自己 127.0.0.1:30303,127.0.0.1:30304） -d 机构证书存放目录 -a 机构证书名 -x SystemProxy address（链上的所有节点都一样） -s god_address -i 创世节点的Node ID
-sh generate_node.sh -o /mydata -n node1 -l 127.0.0.1 -r 8546 -p 30304 -c 8892 -e 127.0.0.1:30303,127.0.0.1:30304 -d /mydata/test_agency -a test_agency -x 0x919868496524eedc26dbb81915fa1547a20f8998 -s 0xf78451eb46e20bc5336e279c52bda3a3e92c09b6 -i d23058c33577f850832e47994df495c674ba66273df2fcb1e6ee7d7e1dbd7be78be2f7b302c9d15842110b3db6239da2aa98ddf68e512b452df748d3d3e4c1cd
+#bash generate_node -o 节点文件生成位置 -n 节点名 -l 节点监听的IP -r 节点的RPC端口 -p 节点的P2P端口 -c 节点的Channel Port端口 -e 链上现有节点的P2P端口列表，用“,”隔开（如指向创世节点和自己 127.0.0.1:30303,127.0.0.1:30304） -d 机构证书存放目录 -a 机构证书名 -x SystemProxy address（链上的所有节点都一样） -s god_address -i 创世节点的Node ID
+bash generate_node.sh -o /mydata -n node1 -l 127.0.0.1 -r 8546 -p 30304 -c 8892 -e 127.0.0.1:30303,127.0.0.1:30304 -d /mydata/test_agency -a test_agency -x 0x919868496524eedc26dbb81915fa1547a20f8998 -s 0xf78451eb46e20bc5336e279c52bda3a3e92c09b6 -i d23058c33577f850832e47994df495c674ba66273df2fcb1e6ee7d7e1dbd7be78be2f7b302c9d15842110b3db6239da2aa98ddf68e512b452df748d3d3e4c1cd
 ```
 
 若成功，得到节点信息
@@ -56,7 +56,7 @@ State:			Stop
 
 ``` shell
 cd /mydata/node1
-sh start.sh
+bash start.sh
 #关闭用 sh stop.sh
 ```
 
@@ -71,15 +71,15 @@ cd /mydata/FISCO-BCOS/tools/scripts/
 设置需要操作的链的RPC端口（若之前已设置，则无需重复设置）
 
 ```shell
-#sh set_proxy_address.sh -o 节点的RPC address
-sh set_proxy_address.sh -o 127.0.0.1:8545 
+#bash set_proxy_address.sh -o 节点的RPC address
+bash set_proxy_address.sh -o 127.0.0.1:8545 
 ```
 
 将节点注册入联盟中，参与共识
 
 ```shell
-#sh register_node.sh -d 要注册节点的文件目录
-sh register_node.sh -d /mydata/node1/
+#bash register_node.sh -d 要注册节点的文件目录
+bash register_node.sh -d /mydata/node1/
 ```
 
 ## 验证节点启动
