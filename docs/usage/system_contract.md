@@ -10,7 +10,15 @@
 * 权限管理合约
 * 全网配置合约
 
-系统合约在创世节点生成时，脚本已自动将其部署到链上，并设置了节点config.json文件中的systemproxyaddress来指向系统合约的地址。
+**节点相关**
+
+系统合约在创世节点生成时，脚本已自动将其部署到链上，并设置了节点config.json文件中的systemproxyaddress来指向系统合约的地址。重新更新systemproxyaddress的节点需重新启动才能生效。
+
+**操作相关**
+
+配置：在操作前，需用脚本``` set_proxy_address.sh```配置需要操作的链。
+
+操作目录：``` FISCO-BCOS/tools/systemcontract ```
 
 ## 系统代理合约
 
