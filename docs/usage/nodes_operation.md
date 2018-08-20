@@ -35,9 +35,9 @@ node0
 其中，按类型归类：
 
 * 配置文件：genesis.json、config.json、log.conf、bootstrapnodes.json
-* 证书文件：ca.crt、agency.crt、node.crt
+* 证书文件：ca.crt、agency.crt、node.crt、node.csr、node.key、node.private、node.pubkey
 * 功能文件：node.json
-* 信息文件：node.nodeid、node.serial 
+* 信息文件：node.nodeid、node.serial、node.ca 
 * 日志文件：fisco-bcos.log、log文件夹
 * 操作脚本：start.sh、stop.sh
 
@@ -194,7 +194,7 @@ log.conf中配置节点日志生成的格式、路径和优先级。
 
 ## 证书文件
 
-
+参考[证书说明](https://fisco-bcos-test.readthedocs.io/zh/latest/docs/usage/cert_permission.html)
 
 ## 功能文件
 
