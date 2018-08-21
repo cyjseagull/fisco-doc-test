@@ -31,7 +31,6 @@ RUN赋能计划 系列直播
 .. toctree::
    :maxdepth: 1
 
-   FISCO-BCOS实践指引/README.md
    极简Java应用开发入门/README.md
    区块链应用系统开发TIPS/README.md
    FISCO-BCOS和以太坊差异综述/README.md
