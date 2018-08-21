@@ -3,6 +3,7 @@
 ```eval_rst
 
 .. important::
+
    - 配置web3sdk前，请确保参考 `web3sdk编译文档 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/quick-start/compile.html#>`_ 成功编译web3sdk
    - 配置web3sdk前，请先生成客户端证书，并将证书拷贝到web3sdk/dist/conf目录：
     1. 手动搭链：客户端证书生成参考 `FISCO-BCOS快速入门 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/getstart/cert_config.html#id3>`_ **基础配置中的SDK证书配置** ;

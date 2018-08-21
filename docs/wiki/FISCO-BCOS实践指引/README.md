@@ -1,11 +1,11 @@
-
-# FISCO BCOS实践指引  
 # FISCO-BCOS实践指引
 
 本文作为一个概括性的实践指引, 包含了FISCO BCOS的环境搭建、特性简介、业务实践的介绍预览, 可以使开发者对FISCO BCOS有一个全局性的认识, 更完整信息可以参考[Wiki](https://github.com/FISCO-BCOS/Wiki)。
+
 ## 环境搭建  
 本段落给出了FISCO BCOS多种环境搭建方式, 从快速体验到逐步搭建, 满足各类开发者的需求。
-- ### 单节点环境  
+
+- 单节点环境  
   指引开发者编译、搭建一个最简单的由一个节点组成的环境, 并进行合约的部署、调用; 同时，能够进行系统合约的部署, 对系统合约有一个简单的认识, 为搭建多节点链做准备。  
 1. [源码编译](https://github.com/FISCO-BCOS/FISCO-BCOS/tree/master/doc/manual#13-编译源码) ： 搭建FISCO BCOS的配置要求, 软件依赖安装, 源码获取, 源码编译介绍。 
 2. [创建创世节点(单节点环境搭建)](https://github.com/FISCO-BCOS/FISCO-BCOS/tree/master/doc/manual#第二章-创建创世节点) ：搭建只有一个节点的区块链环境, 创世节点是区块链中的第一个节点, 搭建多节点的链环境, 也需要从创世节点开始。 
@@ -47,13 +47,16 @@
 
 ## 业务实践  
 本模块介绍FISCO BCOS客户端web3sk的使用, 并在此基础上给出了一个工业级的生产案例--存证sample。
+
 ### web3sdk  
   web3sdk是FISCO BCOS的java客户端, 针对FISCO BCOS做了多项优化、改进, 添加了FISCO BCOS的多项特性。    
   [下载地址](https://github.com/FISCO-BCOS/web3sdk)    
   [使用文档](https://github.com/FISCO-BCOS/web3sdk/blob/master/README.md)    
+
 ###  存证sample
   [源码地址](https://github.com/FISCO-BCOS/Wiki/tree/master/%E5%AD%98%E8%AF%81sample%E8%AF%B4%E6%98%8E)  
   FISCO BCOS是聚焦于金融级应用服务的区块链底层技术平台。在此基础上，FISCO BCOS团队结合区块链不可篡改、多方共识等特性，开发此sample以帮助开发者快速入门区块链存证应用开发。  
   本sample建立了完整的存证、核证、取证业务模型，并允许司法机构参与到业务过程中实时见证。为后续的证据核实、纠纷解决、裁决送达提供了可信、可追溯、可证明的技术保障。  
+
 ### 区块链应用系统开发TIPS  
    [文档地址](https://github.com/FISCO-BCOS/Wiki/tree/master/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91TIPS)
