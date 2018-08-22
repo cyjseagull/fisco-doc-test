@@ -27,13 +27,12 @@ $ cp sdk.* ca.crt client.keystore /mydata/web3sdk/dist/conf/
 config.json中包含systemproxyaddress 系统合约地址 rpcport, p2pport,channelPort。
 
 
-用户根据build/node*/config.json 配置node的相关数据：需要更改的有系统合约地址systemproxyaddress，node 主要，证书需要和机构名保持一致，如果用户在搭建物料包时使用的机构名为WB，则需要在
+用户根据build/node*/config.json 配置java客户端相关数据：需要更改的有数据有：系统合约地址systemproxyaddress，node port相关信息等
 
 ```
 $ vim applicationContext.xml
 ```
 
-中将机构名称改为WB
 
 具体操作参考web3sdk-配置文件[https://fisco-bcos-test.readthedocs.io/zh/latest/docs/web3sdk/config_web3sdk.html]
 
