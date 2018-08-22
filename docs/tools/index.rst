@@ -40,5 +40,6 @@ FISCO BCOS物料包
    sample.md
    appendix.md
    oracle_java.md
+   web3sdk.md
    check_list.md
    FAQ.md
