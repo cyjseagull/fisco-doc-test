@@ -70,7 +70,7 @@ sdk.pubkey sdk公钥
 
 
 ## 证书生成流程：
-FISCO-BCOS的证书生成流程如下，详见 https://fisco-bcos-test.readthedocs.io/zh/latest/docs/usage/tools.html 中证书操作部分
+FISCO-BCOS的证书生成流程如下，详见[证书操作](https://fisco-bcos-test.readthedocs.io/zh/latest/docs/usage/tools.html)部分
 
 ### 生成链证书：
 ```shell
