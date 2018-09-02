@@ -26,8 +26,8 @@
    参考 `web3sdk issue1: 【使用工具包生成合约Java Wrap代码时报错】 <https://github.com/FISCO-BCOS/web3sdk/issues/1>`_ ，具体解决方法:
     .. code-block:: bash
 
-       #------进入web3sdk代码目录(设web3sdk是/mydata/web3sdk-master下)
-       $ cd /mydata/web3sdk-master
+       #------进入web3sdk代码目录(设web3sdk是~/mydata/web3sdk-master下)
+       $ cd ~/mydata/web3sdk-master
        
        #------删除已经以前的编译文件
        $ rm -rf dist

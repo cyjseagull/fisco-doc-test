@@ -108,8 +108,6 @@ FISCO-BCOS提供generate_genesis_node.sh脚本初始化节点环境并部署系�
 $ cd ~/mydata/FISCO-BCOS/tools/scripts
 
 #调用generate_genesis_node.sh生成创世节点环境并部署系统合约
-#---节点位于~/mydata目录，节点名为node0，监听IP是127.0.0.1, rpc端口是8545, 
-#---p2p端口是30303, channelport是8891
 #--------------------------------------------------------
 # -o: 创世节点所在目录，这里设置为~/mydata
 # -n: 创世节点名称，这里设置为node0
@@ -184,6 +182,15 @@ Example: #非国密版FISCO-BCOS使用示例
 guomi Example: #国密版FISCO-BCOS使用示例
  ./generate_genesis_node.sh -o ~/mydata -n node0 -l 127.0.0.1 -r 8545 -p 30303 -c 8891 -g
 ```
+```eval_rst
+.. admonition:: 说明
+
+    若本步执行异常，可能是国密版nodejs环境初始化出错，请通过 ``init_guomi_nodejs.sh`` 脚本重新初始化nodejs环境，设FISCO-BCOS源码位于~/mydata目录，执行命令如下:
+     .. code-block:: bash
+        
+        cd ~/mydata/FISCO-BCOS/tools/scripts && bash init_guomi_nodejs.sh
+```
+
 
 ## check创世节点环境
 

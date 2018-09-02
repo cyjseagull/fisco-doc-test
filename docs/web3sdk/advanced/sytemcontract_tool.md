@@ -41,8 +41,8 @@
    使用方法:
      .. code-block:: bash
 
-        #进入程序web3sdk所在目录(设web3sdk代码位于/mydata/目录)
-        $ cd /mydata/web3sdk/dist/bin
+        #进入程序web3sdk所在目录(设web3sdk代码位于~/mydata/目录)
+        $ cd ~/mydata/web3sdk/dist/bin
         $ chmod a+x web3sdk
         $ ./web3sdk SystemProxy #调用SystemProxy
       
@@ -59,8 +59,8 @@
     
     .. code-block:: bash
 
-       #进入bin目录(设web3sdk代码位于/mydata/目录)
-       $ cd /mydata/web3sdk/dist/bin
+       #进入bin目录(设web3sdk代码位于~/mydata/目录)
+       $ cd ~/mydata/web3sdk/dist/bin
        $ chmod a+x web3sdk
        $ ./web3sdk NodeAction registerNode ${node_json_path}
 
@@ -96,12 +96,12 @@
        }
   
   节点退出记账者列表
-    ``./web3sdk NodeAction cancelNode ${node_json_path}`` 将${node_json_path}指定的节点从FISCO BCOS区块链网络中退出(${node_json_path}是节点配置文件相对于/mydata/web3sdk/dist/conf的路径，节点配置文件说明同上)：
+    ``./web3sdk NodeAction cancelNode ${node_json_path}`` 将${node_json_path}指定的节点从FISCO BCOS区块链网络中退出(${node_json_path}是节点配置文件相对于~/mydata/web3sdk/dist/conf的路径，节点配置文件说明同上)：
 
      .. code-block:: bash
 
-        #进入bin目录(设web3sdk代码位于/mydata/目录)
-        $ cd /mydata/web3sdk/dist/bin
+        #进入bin目录(设web3sdk代码位于~/mydata/目录)
+        $ cd ~/mydata/web3sdk/dist/bin
         $ chmod a+x web3sdk
         $ ./web3sdk NodeAction cancelNode ${node_json_path}
   
@@ -110,8 +110,8 @@
 
      .. code-block:: bash
 
-        #进入bin目录(设web3sdk代码位于/mydata/目录)
-        $ cd /mydata/web3sdk/dist/bin
+        #进入bin目录(设web3sdk代码位于~/mydata/目录)
+        $ cd ~/mydata/web3sdk/dist/bin
         $ chmod a+x web3sdk
         $ ./web3sdk NodeAction all
         # 输出的记账节点信息如下:
@@ -138,8 +138,8 @@
      
      .. code-block:: bash
 
-        #进入bin目录(设web3sdk代码位于/mydata/目录)
-        $ cd /mydata/web3sdk/dist/bin
+        #进入bin目录(设web3sdk代码位于~/mydata/目录)
+        $ cd ~/mydata/web3sdk/dist/bin
         $ chmod a+x web3sdk
         $ ./web3sdk CAAction add ${node_ca_path}
 
@@ -148,8 +148,8 @@
 
        .. code-block:: bash
 
-          #进入bin目录(设web3sdk代码位于/mydata/目录)
-          $ cd /mydata/web3sdk/dist/bin
+          #进入bin目录(设web3sdk代码位于~/mydata/目录)
+          $ cd ~/mydata/web3sdk/dist/bin
           $ chmod a+x web3sdk
           $ ./web3sdk CAAction remove ${node_ca_path}
 
@@ -158,8 +158,8 @@
        
        .. code-block:: bash
 
-           #进入bin目录(设web3sdk代码位于/mydata/目录)
-           $ cd /mydata/web3sdk/dist/bin
+           #进入bin目录(设web3sdk代码位于~/mydata/目录)
+           $ cd ~/mydata/web3sdk/dist/bin
            $ chmod a+x web3sdk
            $ ./web3sdk CAAction all
 ```
@@ -215,8 +215,8 @@
      通过ConfigAction配置系统参数的例子如下:
       .. code-block:: bash
 
-         # 进入bin目录(设web3sdk代码位于/mydata/目录)
-         $ cd /mydata/web3sdk/dist/bin
+         # 进入bin目录(设web3sdk代码位于~/mydata/目录)
+         $ cd ~/mydata/web3sdk/dist/bin
          $ chmod a+x web3sdk
          # =====更改出块时间为2s====
          $ ./web3sdk ConfigAction set intervalBlockTime 2000

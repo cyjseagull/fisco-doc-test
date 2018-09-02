@@ -11,16 +11,13 @@
    **centos**:  
     .. code-block:: bash
 
-       $ sudo yum -y install git
-       $ sudo yum -y install dos2unix
+       $ sudo yum -y install git dos2unix 
     
    **ubuntu**: 
     .. code-block:: bash
 
-       $ sudo apt install git
-       $ sudo apt install tofrodos
-       $ ln -s /usr/bin/todos /usr/bin/unxi2dos
-       $ ln -s /usr/bin/fromdos /usr/
+       $ sudo apt install git tofrodos
+       $ ln -s /usr/bin/todos /usr/bin/unxi2dos && ln -s /usr/bin/fromdos /usr/
 
 .. admonition:: 编译源码
 
@@ -28,9 +25,9 @@
 
     .. code-block:: bash
 
-       #=== 创建并进入web3sdk源码放置目录（假设为/mydata/）=====
-       $ mkdir -p /mydata
-       $ cd /mydata
+       #=== 创建并进入web3sdk源码放置目录（假设为~/mydata/）=====
+       $ mkdir -p ~/mydata
+       $ cd ~/mydata
        
        #==== 拉取git代码 ====
        $ git clone https://github.com/FISCO-BCOS/web3sdk

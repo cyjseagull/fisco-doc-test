@@ -54,8 +54,9 @@
         $ cd ~/mydata/FISCO-BCOS
 
         # 调用build.sh脚本编译国密版fisco-bcos
+        # 注: (当前用户需要有sudo权限，期间可能会多次输入密码)
         # -g: 编译国密版FISCO-BCOS(国密链必须设置该选项)
-        $ sudo bash build.sh -g
+        $ bash build.sh -g
 
         # 确认fisco-bcos是国密版本
         $ fisco-bcos --version

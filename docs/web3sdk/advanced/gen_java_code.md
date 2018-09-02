@@ -31,21 +31,21 @@
 
      .. code-block:: bash
 
-        $ cd /mydata/web3sdk/tool/contracts
+        $ cd ~/mydata/web3sdk/tool/contracts
         $ ls
         EvidenceSignersData.sol  Evidence.sol  Ok.sol
-        #----进入compile.sh脚本所在路径(设web3sdk代码路径是/mydata/web3sdk)
-        $ cd /mydata/web3sdk/dist/bin
+        #----进入compile.sh脚本所在路径(设web3sdk代码路径是~/mydata/web3sdk)
+        $ cd ~/mydata/web3sdk/dist/bin
     
     ``web3sdk/dist/contracts`` 目录下所有智能合约转换成不支持国密特性的java代码
 
        .. code-block:: bash
 
-          #执行compile.sh脚本，将/mydata/web3sdk/dist/contract目录下所有合约代码转换成java代码
+          #执行compile.sh脚本，将~/mydata/web3sdk/dist/contract目录下所有合约代码转换成java代码
           #(com是java代码所属的包，转换后可手动修改)
           $ bash compile.sh com
 
-    查看生成的java代码(位于/mydata/web3sdk/dist/output)
+    查看生成的java代码(位于~/mydata/web3sdk/dist/output)
 
        .. code-block:: bash
 

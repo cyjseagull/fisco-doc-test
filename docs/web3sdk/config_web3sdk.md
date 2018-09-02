@@ -36,7 +36,8 @@
 
         <property name="connectionsStr">
             <list>
-                <value>【节点id】@【IP】:【端口】</value>
+                <!--节点配置：【节点id，可以是任意字符串】@【IP】:【channel port端口】-->
+                <value>node1@127.0.0.1:30303</value>
             </list>
         </property>
 
@@ -64,17 +65,17 @@
 .. important::
    -  **节点id查询方法** ：
     
-    1. 查询节点id：若节点服务器上，节点数据目录所在路径为/mydata/node0/，则节点id可以在/mydata/node0/data/node.nodeid文件里查到;
+    1. 查询节点id：若节点服务器上，节点数据目录所在路径为~/mydata/node0/，则节点id可以在~/mydata/node0/data/node.nodeid文件里查到;
     
-    2. channelPort、系统合约地址systemcontractaddress等信息查询: 若节点服务器上，节点数据目录所在路径为/mydata/node0/，在/mydata/node0/config.json里可查到;
+    2. channelPort、系统合约地址systemcontractaddress等信息查询: 若节点服务器上，节点数据目录所在路径为~/mydata/node0/，在~/mydata/node0/config.json里可查到;
     
    - **god账号信息查询：**
     
     1. 手动搭链：
     
-     ① **非国密版FISCO-BCOS** ：设源码位于/mydata/FISCO-BCOS目录，则god账号信息位于/mydata/FISCO-BCOS/tools/scripts/godInfo.txt文件中; 若搭链过程中使用系统默认god账号，则god账号位于/mydata/FISCO-BCOS/tools/scripts/god_info/godInfo.txt文件;
+     ① **非国密版FISCO-BCOS** ：设源码位于~/mydata/FISCO-BCOS目录，则god账号信息位于~/mydata/FISCO-BCOS/tools/scripts/godInfo.txt文件中; 若搭链过程中使用系统默认god账号，则god账号位于~/mydata/FISCO-BCOS/tools/scripts/god_info/godInfo.txt文件;
      
-     ② **国密版FISCO-BCOS** ：设源码位于/mydata/FISCO-BCOS目录，则god账号位于/mydata/FISCO-BCOS/tools/scripts/guomi_godInfo.txt文件中; 若搭链过程中使用系统默认god账号，则god账号位于/mydata/FISCO-BCOS/tools/scripts/god_info/guomiDefaultGod.txt
+     ② **国密版FISCO-BCOS** ：设源码位于~/mydata/FISCO-BCOS目录，则god账号位于~/mydata/FISCO-BCOS/tools/scripts/guomi_godInfo.txt文件中; 若搭链过程中使用系统默认god账号，则god账号位于~/mydata/FISCO-BCOS/tools/scripts/god_info/guomiDefaultGod.txt
     
     2. 使用 `FISCO-BCOS物料包 <https://fisco-bcos-test.readthedocs.io/zh/latest/docs/tools/fisco-package/index.html>`_ 搭链: 参考 `god账号说明 <https://github.com/FISCO-BCOS/fisco-package-build-tool#71-god%E8%B4%A6%E5%8F%B7>`_ 获取god账号信息;
    
@@ -92,8 +93,8 @@
    具体测试过程如下：
     .. code-block:: bash
 
-       # 进入web3sdk目录(设源码位于/mydata/web3sdk/dist中)
-       $ cd /mydata/web3sdk/dist
+       # 进入web3sdk目录(设源码位于~/mydata/web3sdk/dist中)
+       $ cd ~/mydata/web3sdk/dist
        
        # 调用测试合约TestOk
        $ java -cp 'conf/:apps/*:lib/*' org.bcos.channel.test.TestOk

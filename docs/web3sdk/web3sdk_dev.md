@@ -40,8 +40,8 @@
     web3sdk提供了 ``counter_compile.sh`` 脚本将Counter.sol转换成Counter.java:
      .. code-block:: bash
         
-        # 进入合约编译脚本所在目录 (设web3sdk位于/mydata目录)
-        $ cd /mydata/web3sdk/dist/bin
+        # 进入合约编译脚本所在目录 (设web3sdk位于~/mydata目录)
+        $ cd ~/mydata/web3sdk/dist/bin
         # 执行合约编译脚本
         # (com是java代码所属的包，转换后可手动修改)
         $ bash counter_compile.sh org.bcosliteclient
@@ -49,7 +49,7 @@
     查看生成的java代码
       .. code-block:: bash
 
-         $ cd /mydata/web3sdk/dist/output
+         $ cd ~/mydata/web3sdk/dist/output
          $ tree
          # ...此处省略若干输出...
          ├── Counter.abi  # Counter.sol编译生成的abi文件
@@ -88,8 +88,8 @@
 
    .. code-block:: bash
       
-      # 解压应用程序(设下载的压缩包bcosliteclient.zip位于/mydata目录下)
-      $ cd /mydata && unzip bcosliteclient.zip
+      # 解压应用程序(设下载的压缩包bcosliteclient.zip位于~/mydata目录下)
+      $ cd ~/mydata && unzip bcosliteclient.zip
       
       # 编译bcosliteclient应用
       $ cd bcosliteclient && gradle build
@@ -132,8 +132,8 @@
    按照上节操作配置好java应用工程后，可调用相关接口部署和调用Counter.sol合约。
     .. code-block:: bash
        
-       # 设bcosliteclient应用位于/mydata目录
-       $ cd /mydata/bcosliteclient/bcosliteclient/bin
+       # 设bcosliteclient应用位于~/mydata目录
+       $ cd ~/mydata/bcosliteclient/bcosliteclient/bin
        # 部署合约
        $ chmod a+x bcosclient && ./bcosclient deploy
        -----> start test !
@@ -150,8 +150,8 @@
    使用 ``bcosliteclient/bcosliteclient/bin`` 目录下的 ``bcosclient`` 脚本调用Counter.sol合约：
     .. code-block:: bash
           
-       # 设bcosliteclient应用位于/mydata目录
-       $ cd /mydata/bcosliteclient/bcosliteclient/bin
+       # 设bcosliteclient应用位于~/mydata目录
+       $ cd ~/mydata/bcosliteclient/bcosliteclient/bin
        # 调用合约(合约地址是0x8bc176465048ec377a824b7cf36f3cd7452cd093)
        $ chmod a+x bcosclient && ./bcosclient call_contract 0x8bc176465048ec377a824b7cf36f3cd7452cd093
        -----> start test !
