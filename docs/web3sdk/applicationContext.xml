@@ -19,9 +19,10 @@
 			<bean class="java.util.concurrent.ThreadPoolExecutor.AbortPolicy" />
 		</property>
     </bean>
+
         <!--encryptType: 国密算法开关，0表示关闭国密算法, 1表示开启国密算法-->
 	<bean id="encryptType" class="org.bcos.web3j.crypto.EncryptType">
-		<constructor-arg value="0"/>
+		<constructor-arg value="1"/>
 	</bean>
 
 	<bean id="toolConf" class="org.bcos.contract.tools.ToolConf">

@@ -15,9 +15,9 @@
 生成SDK证书时，直接将节点证书拷贝到`web3sdk/dist/conf`目录即可:
 
 ```bash
-# 设web3sdk连接的节点位于/mydata/node0目录, sdk名称为sdk1
-# 设web3sdk位于/mydata/web3sdk目录
-$ cp /mydata/node0/data/sdk1/* /mydata/web3sdk/dist/conf
+# 设web3sdk连接的节点位于~/mydata/node0目录, sdk名称为sdk1
+# 设web3sdk位于~/mydata/web3sdk目录
+$ cp ~/mydata/node0/data/sdk1/* ~/mydata/web3sdk/dist/conf
 ```
 
 
@@ -44,8 +44,8 @@ $ cp /mydata/node0/data/sdk1/* /mydata/web3sdk/dist/conf
 
     .. code-block:: bash
     
-       # 进入web3sdk目录(设源码位于/mydata/web3sdk/dist中)
-       $ cd /mydata/web3sdk/dist
+       # 进入web3sdk目录(设源码位于~/mydata/web3sdk/dist中)
+       $ cd ~/mydata/web3sdk/dist
        
        # 调用测试程序TestOk
        $ java -cp 'conf/:apps/*:lib/*' org.bcos.channel.test.TestOk

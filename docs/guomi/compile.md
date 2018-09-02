@@ -10,27 +10,21 @@
   
    .. code-block:: bash
 
-      $ sudo yum -y install git
-      $ sudo yum -y install dos2unix
-      $ sudo yum -y install lsof
+      $ sudo yum -y install git dos2unix lsof
     
    ubuntu系统安装如下软件:
 
    .. code-block:: bash
       
-      $ sudo apt install git
-      $ sudo apt install lsof
-      $ sudo apt install tofrodos
-      $ ln -s /usr/bin/todos /usr/bin/unxi2dos
-      $ ln -s /usr/bin/fromdos /usr/bin/dos2unix
-
+      $ sudo apt install git lsof tofrodos
+      $ ln -s /usr/bin/todos /usr/bin/unxi2dos && ln -s /usr/bin/fromdos /usr/bin/dos2unix
 
 .. admonition:: 拉取源码
    
    .. code-block:: bash
 
-      # 进入源码存放目录
-      $ cd /mydata
+      # 进入源码存放目录(设位于~/mydata)
+      $ cd ~/mydata
       
       # 从git拉取源码
       $ git clone https://github.com/FISCO-BCOS/FISCO-BCOS
@@ -56,10 +50,11 @@
    编译国密版FISCO-BCOS(-DENCRYPTTYPE=ON)：
      .. code-block:: bash
         
-        # 进入源码目录(设位于/mydata目录)
-        $ cd /mydata/FISCO-BCOS
+        # 进入源码目录(设位于~/mydata目录)
+        $ cd ~/mydata/FISCO-BCOS
 
         # 调用build.sh脚本编译国密版fisco-bcos
+        # -g: 编译国密版FISCO-BCOS(国密链必须设置该选项)
         $ sudo bash build.sh -g
 
         # 确认fisco-bcos是国密版本
