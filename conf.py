@@ -22,8 +22,6 @@ import sphinx_rtd_theme
 from commonmark import Parser
 from recommonmark.parser import CommonMarkParser
 from recommonmark.transform import AutoStructify
-from commonmark import DocParser
-from docutils import nodes
 
 # The suffix of source filenames.
 source_parsers = {
