@@ -21,7 +21,7 @@ import shlex
 import sphinx_rtd_theme
 from recommonmark.parser import CommonMarkParser
 from recommonmark.transform import AutoStructify
-import patch.py
+
 
 # The suffix of source filenames.
 source_parsers = {
