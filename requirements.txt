@@ -3,5 +3,4 @@ sphinx ==  1.7.5
 sphinx-rtd-theme
 -e git+git://github.com/rtfd/recommonmark.git#egg=recommonmark
 commonmark==0.7.5
-markdown
 sphinx-markdown-tables
