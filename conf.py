@@ -324,6 +324,7 @@ def setup(app):
         'auto_toc_tree_section': 'Contents',
         'enable_eval_rst': True,
         'enable_auto_doc_ref': True,
+        'enable_table_extension': True,
 	}, True)
 
     app.add_transform(AutoStructify)
